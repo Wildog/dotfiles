@@ -26,10 +26,13 @@
         </autogen>
     </item>
     <item>
-        <name>Option_R to Command_R (FC660M)</name>
+        <name>Remap Option_R And Esc for FC660M</name>
         <identifier>private.optionrcommandr</identifier>
         <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::OPTION_R,
+            KeyCode::COMMAND_R</autogen>
         <autogen>
             __KeyToKey__
             KeyCode::ESCAPE, ModifierFlag::COMMAND_L,
