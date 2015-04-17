@@ -1,8 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
 ZSH_THEME="Soliah"
 plugins=(git git-extras autojump osx sudo zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
 
 alias vim='mvim'
 alias cdp='popd'
@@ -14,8 +13,6 @@ alias runftp='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
 alias stopftp='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 alias backupon='defaults delete com.apple.iTunes DeviceBackupsDisabled'
 alias backupoff='defaults write com.apple.iTunes DeviceBackupsDisabled -bool YES'
-alias vpssync='rsync -vzr --progress --delete ~/Downloads/vpssync/ root@vps.wildog.net::transfer --password-file=/Users/pro/.ssh/rsync.pass'
-alias vps='mosh --ssh="ssh -p 5537 -i ~/.ssh/centos.key" root@vps.wildog.net'
 
 JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
 CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:~/.vim/autoload
@@ -42,3 +39,4 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 #        alias $COMMAND="nocorrect $COMMAND"
 #    done < ~/.zsh_nocorrect
 #fi
+
