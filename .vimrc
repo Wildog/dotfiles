@@ -118,8 +118,7 @@ let g:ycm_semantic_triggers =  {
     \ 'lua' : ['.', ':'],
     \ 'erlang' : [':'] }
 " Javacomplete related conf
-autocmd Filetype java set omnifunc=javacomplete#Complete
-autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 " IndentLine related conf
 let g:indentLine_enabled=1
 let g:indentLine_char='┆'
@@ -155,6 +154,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 " Taglist related conf
 let Tlist_Auto_Open=0 " Let the tag list open automatically
+let Tlist_Auto_Update=1 " Let the tag list update automatically
 let Tlist_Compact_Format=0 " Hide help menu
 let Tlist_Enable_Fold_Column=0 "do show folding tree
 let Tlist_Show_One_File=0 " Only show the tag list of current file
