@@ -49,7 +49,8 @@
         </vkopenurldef>
         <autogen>
             --KeyToKey--
-            KeyCode::PC_INSERT, KeyCode::VK_OPEN_URL_APP_iTerm,
+            KeyCode::PC_INSERT, ModifierFlag::NONE,
+            KeyCode::VK_OPEN_URL_APP_iTerm
         </autogen>  
     </item>
     <item>
@@ -81,7 +82,7 @@
         </autogen>
         <autogen>
             --KeyToKey--
-            KeyCode::FORWARD_DELETE,
+            KeyCode::FORWARD_DELETE, ModifierFlag::NONE,
             ConsumerKeyCode::MUSIC_PLAY
         </autogen>
         <autogen>
