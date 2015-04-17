@@ -30,11 +30,12 @@
         <identifier>private.optionrcommandr</identifier>
         <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
         <autogen>
-            __KeyToKey__
+            --KeyToKey--
             KeyCode::OPTION_R,
-            KeyCode::COMMAND_R</autogen>
+            KeyCode::COMMAND_R
+        </autogen>
         <autogen>
-            __KeyToKey__
+            --KeyToKey--
             KeyCode::ESCAPE, ModifierFlag::COMMAND_L,
             KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L
         </autogen>
@@ -79,7 +80,7 @@
             ConsumerKeyCode::VOLUME_UP
         </autogen>
         <autogen>
-            __KeyToKey__
+            --KeyToKey--
             KeyCode::FORWARD_DELETE,
             ConsumerKeyCode::MUSIC_PLAY
         </autogen>
@@ -107,11 +108,13 @@
         <name>Command_L + Scrollwheel to Zoom</name>
         <identifier>private.scroll2zoom</identifier>
         <autogen>
-            __ScrollWheelToKey__ ScrollWheel::UP, ModifierFlag::COMMAND_L,
+            --ScrollWheelToKey--
+            ScrollWheel::UP, ModifierFlag::COMMAND_L,
             KeyCode::MINUS, ModifierFlag::COMMAND_L
         </autogen>
         <autogen>
-            __ScrollWheelToKey__ ScrollWheel::DOWN, ModifierFlag::COMMAND_L,
+            --ScrollWheelToKey--
+            ScrollWheel::DOWN, ModifierFlag::COMMAND_L,
             KeyCode::KEYPAD_PLUS, ModifierFlag::COMMAND_L
         </autogen>
     </item>
@@ -119,7 +122,7 @@
         <name>Control_R to Option_R</name>
         <identifier>private.ctrlr2optr</identifier>
         <autogen>
-            __KeyToKey__
+            --KeyToKey--
             KeyCode::CONTROL_R,
             KeyCode::OPTION_R
         </autogen>
@@ -134,8 +137,8 @@
         <only>MACVIM</only>
         <device_only>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_only>
         <autogen>
-            __KeyToKey__
-            KeyCode::BACKQUOTE,
+            --KeyToKey--
+            KeyCode::BACKQUOTE, ModifierFlag::NONE,
             KeyCode::ESCAPE
         </autogen>
     </item>
