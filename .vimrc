@@ -18,6 +18,7 @@ set shell=/bin/zsh              " set zsh as shell
 set guioptions-=r               " Hide scrollbar
 set guioptions-=L               " Hide leftscrollbar
 set fillchars+=vert:\┊
+set autochdir
 set showmatch
 set ignorecase
 set smartcase
@@ -39,8 +40,6 @@ set tm=3000
 
 " Autocommands
 " -------------------------------------
-" Change default working dir
-exec 'cd ~/tmp'
 " Enable mouse
 if has('mouse')
   set mouse=a
@@ -63,6 +62,9 @@ au BufReadPost * if &modifiable | retab
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+" Change default working dir to ~/tmp if current tab is empty
+au BufWinEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
+au TabEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
 " Auto mkview and loadview
 " autocmd BufWinLeave *.* mkview
 " autocmd BufWinEnter *.* silent loadview 
@@ -88,6 +90,7 @@ Plugin 'taglist.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 " Put Powerline into use
 python from powerline.vim import setup as powerline_setup
@@ -96,6 +99,8 @@ python del powerline_setup
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+" Highlight YAML frontmatter of markdown
+let g:vim_markdown_frontmatter=1
 " YouCompleteMe related conf
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_error_symbol = '>>'
@@ -139,6 +144,8 @@ let g:syntastic_mode_map = {
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_auto_jump = 1
 nmap <silent> <leader>lr :SyntasticReset<CR>
+" CtrlP related
+" let g:ctrlp_working_path_mode = 'c'
 " NERDTree related conf
 let NERDTreeWinSize=20
 let NERDTreeQuitOnOpen=1
@@ -370,6 +377,28 @@ func! Diags()
         exec "SyntasticCheck"
     endif
 endfunc
+
+" Check whether a tab is empty
+function! TabIsEmpty()
+    " Remember which window we're in at the moment
+    let initial_win_num = winnr()
+
+    let win_count = 0
+    " Add the length of the file name on to count:
+    " this will be 0 if there is no file name
+    windo let win_count += len(expand('%'))
+
+    " Go back to the initial window
+    exe initial_win_num . "wincmd w"
+
+    " Check count
+    if win_count == 0
+        " Tab page is empty
+        return 1
+    else
+        return 0
+    endif
+endfunction
 " --------------------------------------
 
 " Nohighlight search, this has to be at the end
