@@ -3,6 +3,7 @@
 set nocompatible
 filetype off   
 filetype plugin indent on
+set fileencodings=utf-8,ucs-bom,cp936,gb18030,gbk,gb2312,euc-jp,euc-kr,latin1
 colorscheme desert 
 set t_Co=256
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
@@ -15,6 +16,7 @@ set isk+=-                      " set *-* as word
 set matchpairs=(:),{:},[:],<:>  " add match pair <:> for html
 set viewdir=$HOME/.vimview      " path to save view
 set shell=/bin/zsh              " set zsh as shell
+"set shellcmdflag+=i             " source .zshrc
 set guioptions-=r               " Hide scrollbar
 set guioptions-=L               " Hide leftscrollbar
 set fillchars+=vert:\┊
@@ -79,6 +81,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tabular'
+Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ShowMarks'
@@ -91,6 +94,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'terryma/vim-smooth-scroll'
 call vundle#end()            " required
 " Put Powerline into use
 python from powerline.vim import setup as powerline_setup
@@ -116,14 +120,15 @@ let g:ycm_semantic_triggers =  {
     \ 'objc' : ['->', '.'],
     \ 'ocaml' : ['.', '#'],
     \ 'cpp,objcpp' : ['->', '.', '::'],
+    \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
     \ 'perl' : ['->'],
     \ 'php' : ['->', '::'],
-    \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
     \ 'ruby' : ['.', '::'],
     \ 'lua' : ['.', ':'],
     \ 'erlang' : [':'] }
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
 " IndentLine related conf
 let g:indentLine_enabled=1
 let g:indentLine_char='┆'
@@ -146,8 +151,9 @@ let g:syntastic_mode_map = {
 nmap <silent> <leader>lr :SyntasticReset<CR>
 " CtrlP related
 " let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_open_new_file = 't'
 " NERDTree related conf
-let NERDTreeWinSize=20
+let NERDTreeWinSize=30
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=0
 " EasyMotion related conf
@@ -169,7 +175,7 @@ let Tlist_GainFocus_On_ToggleOpen=1
 let Tlist_Exist_OnlyWindow=1 " If you are the last, kill yourself
 let Tlist_File_Fold_Auto_Close=1 " Fold closed other trees
 let Tlist_Sort_Type="name" " Order by name
-let Tlist_WinWidth=20 " Set the window 40 cols wide.
+let Tlist_WinWidth=30 " Set the window 40 cols wide.
 let Tlist_Close_On_Select=1 " Close the list when a item is selected
 " --------------------------------------
 
@@ -201,6 +207,13 @@ vmap ˚ :m'<-2<cr>`>my`<mzgv`yo`z
 " Jump to prev/next hunk/change 
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
+" Open current directory in Finder
+nmap <leader>o :silent !open .<CR>
+" smooth scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 
 " ---Plugin related---
 "  YouCompleteMe related
@@ -255,6 +268,7 @@ vmap <S-Esc> ~
 nmap <silent> <leader><space> :set hls!<CR>
 " Fold {...} quickly
 nnoremap <silent> <leader>zf ?{<CR>:nohl<CR>zf%
+nnoremap <silent> <space> za
 " Change the behavior of <Enter> to IDE mode when completing
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Paste last yank(after deletion) or just last deleted
@@ -274,6 +288,11 @@ nmap <silent> <leader>vl :loadview<CR>
 " mksession and source session (for last session)
 nmap <silent> <leader>sm :mksession! ~/.vimview/lastsession.vim<CR>:wviminfo! ~/.vimview/lastsession.viminfo<CR>
 nmap <silent> <leader>sl :source ~/.vimview/lastsession.vim<CR>:rviminfo ~/.vimview/lastsession.viminfo<CR>
+" showmarks(modified) keymappings
+   "\mt : Toggles ShowMarks on and off. 
+   "\mh : Hides an individual mark. 
+   "\ma : Hides all marks in the current buffer. 
+   "\mm : Places the next available mark. 
 " --------------------------------------
 
 
