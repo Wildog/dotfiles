@@ -24,6 +24,16 @@
             KeyCode::L, ModifierFlag::CONTROL_L,
             KeyCode::CURSOR_RIGHT
         </autogen>
+        <autogen>
+            --KeyToKey--
+            KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+        </autogen>
+        <autogen>
+            --KeyToKey--
+            KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
+            KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
+        </autogen>
     </item>
     <item>
         <name>Remap Option_R And Esc for FC660M</name>
@@ -130,7 +140,7 @@
     </item>
     <item>
         <name>Backquote to Esc in MacVim</name>
-        <identifier>privated.macvim</identifier>
+        <identifier>private.macvim</identifier>
         <appdef>
             <appname>MACVIM</appname>
             <equal>org.vim.MacVim</equal>
@@ -143,4 +153,95 @@
             KeyCode::ESCAPE
         </autogen>
     </item>
+    <item>
+        <name>Cmd+Shift+C to Cmd+Ctrl+D</name>
+        <identifier>dictionary.simulatetripletouch</identifier>
+        <autogen>
+            --KeyToKey--
+            KeyCode::C, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+            KeyCode::D, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+        </autogen>
+    </item>
+    <item>
+        <name>Open with MacVim in Finder</name>
+        <identifier>private.mviminfinder</identifier>
+        <appdef>
+            <appname>Finder</appname>
+            <equal>com.apple.finder</equal>
+        </appdef>
+        <only>Finder</only>
+        <autogen>
+            --KeyToKey--
+            KeyCode::V, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+            KeyCode::V, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+        </autogen>
+    </item>
+    <item>
+      <name>Insert Mode Commands</name>
+      <item>
+        <name>Enable Insert Mode Commands</name>
+        <appendix>Ctrl-w delete preceding word (Shift+Option+Left, Delete)</appendix>
+        <appendix>Ctrl-u delete preceding line (Shift+Command+Left, Delete)</appendix>
+        <identifier>option.vim_insert_mode</identifier>
+        <appdef>
+            <appname>MACVIM</appname>
+            <equal>org.vim.MacVim</equal>
+        </appdef>
+        <appdef>
+            <appname>iTerm2</appname>
+            <equal>com.googlecode.iterm2</equal>
+        </appdef>
+        <not>MACVIM</not>
+        <not>iTerm2</not>
+        <block>
+          <autogen>
+            __KeyToKey__
+            KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+            KeyCode::DELETE
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+            KeyCode::DELETE
+          </autogen>
+        </block>
+      </item>
+    </item>
+    <item>
+      <name>Reverse scrolling direction (not for trackpad)</name>
+      <item>
+        <name style="important">Important:</name>
+        <appendix>Items are exclusive. Choose one item.</appendix>
+      </item>
+      <item>
+        <name>Reverse Vertical &amp; Horizontal Scrolling</name>
+        <identifier>myremap.reverse_both_scrolling</identifier>
+        <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+          Option::FLIPSCROLLWHEEL_VERTICAL,
+        </autogen>
+      </item>
+      <item>
+        <name>Reverse Vertical Scrolling</name>
+        <identifier>myremap.reverse_vertical_scrolling</identifier>
+        <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_VERTICAL,
+        </autogen>
+      </item>
+      <item>
+        <name>Reverse Horizontal Scrolling</name>
+        <identifier>myremap.reverse_horizontal_scrolling</identifier>
+        <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+        </autogen>
+      </item>
+    </item>    
 </root>
