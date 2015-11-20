@@ -68,6 +68,8 @@ flags = [
 # This path will only work on OS X, but extra paths that don't exist are not
 # harmful
 '/System/Library/Frameworks/Python.framework/Headers',
+'-I/Applications/Matlab/MATLAB_R2014b.app/extern/include',
+'-I/Users/pro/Resources/kernel/include',
 '-isystem',
 '../llvm/include',
 '-isystem',

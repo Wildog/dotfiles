@@ -81,15 +81,18 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tabular'
+Plugin 'Tagbar'
+Plugin 'exvim/ex-utility'
+Plugin 'exvim/ex-project'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kannokanno/previm'
 Plugin 'ShowMarks'
 Plugin 'The-NERD-Commenter'
 Plugin 'Emmet.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'fugitive.vim'
-Plugin 'taglist.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -128,6 +131,7 @@ let g:ycm_semantic_triggers =  {
     \ 'erlang' : [':'] }
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+" let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar:/Users/pro/algs4/stdlib.jar'
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
 " IndentLine related conf
 let g:indentLine_enabled=1
@@ -136,6 +140,9 @@ let g:indentLine_color_gui='#5C8A41'
 " Enable html/css only for emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+" Previm Markdown
+let g:previm_open_cmd = 'open -g'
+map <silent> <C-m> :PrevimOpen<CR>
 " Syntastic related conf
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_always_populate_loc_list = 1
@@ -165,18 +172,23 @@ let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-w>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
+" Tagbar related conf
+let g:tagbar_left=1
+let g:tagbar_width=30
+let g:tagbar_autofocus=1
+let g:tagbar_singleclick = 1
 " Taglist related conf
-let Tlist_Auto_Open=0 " Let the tag list open automatically
-let Tlist_Auto_Update=1 " Let the tag list update automatically
-let Tlist_Compact_Format=0 " Hide help menu
-let Tlist_Enable_Fold_Column=0 "do show folding tree
-let Tlist_Show_One_File=0 " Only show the tag list of current file
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Exist_OnlyWindow=1 " If you are the last, kill yourself
-let Tlist_File_Fold_Auto_Close=1 " Fold closed other trees
-let Tlist_Sort_Type="name" " Order by name
-let Tlist_WinWidth=30 " Set the window 40 cols wide.
-let Tlist_Close_On_Select=1 " Close the list when a item is selected
+" let Tlist_Auto_Open=0 " Let the tag list open automatically
+" let Tlist_Auto_Update=1 " Let the tag list update automatically
+" let Tlist_Compact_Format=0 " Hide help menu
+" let Tlist_Enable_Fold_Column=0 "do show folding tree
+" let Tlist_Show_One_File=0 " Only show the tag list of current file
+" let Tlist_GainFocus_On_ToggleOpen=1
+" let Tlist_Exist_OnlyWindow=1 " If you are the last, kill yourself
+" let Tlist_File_Fold_Auto_Close=1 " Fold closed other trees
+" let Tlist_Sort_Type="name" " Order by name
+" let Tlist_WinWidth=30 " Set the window 40 cols wide.
+" let Tlist_Close_On_Select=1 " Close the list when a item is selected
 " --------------------------------------
 
 
@@ -207,13 +219,14 @@ vmap ˚ :m'<-2<cr>`>my`<mzgv`yo`z
 " Jump to prev/next hunk/change 
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
-" Open current directory in Finder
-nmap <leader>o :silent !open .<CR>
+" Open current directory in Finder/iTerm
+nmap <silent> <leader>of :silent !open .<CR>
+nmap <silent> <leader>ot :silent !osascript ~/Dropbox/Confs/terminalcommandhere-newwin.applescript %:p:h<CR>
 " smooth scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
+nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
+nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
+nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
+nnoremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 
 " ---Plugin related---
 "  YouCompleteMe related
@@ -223,7 +236,8 @@ nmap <silent> <leader>g :call Diags()<CR>
 nmap <silent> <leader>d :YcmCompleter GoTo<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
 " Open Taglist
-nmap <leader>t :Tlist<CR>
+nmap <leader>t :TagbarToggle<CR>
+nmap <leader>r :EXProjectToggle<CR>
 " Open NERDTree and CtrlP
 nmap <leader>f :NERDTree<CR>
 let g:ctrlp_map = '<leader>wf'
@@ -380,7 +394,8 @@ func! RunResult()
             exec "!java %<"
         endif
 endfunc
-nmap :cpl<CR> :call CompileCode()<CR>
+nmap <leader>cp :call CompileCode()<CR>
+nmap <leader>cr :call CompileCode()<CR>:call RunResult()<CR>
 
 " Diagnose syntax
 func! Diags()
