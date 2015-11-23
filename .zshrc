@@ -29,13 +29,17 @@ PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/Library/P
 PATH=$PATH:$HOME/Library/Python/2.7/bin
 PATH=$PATH:/usr/local/smlnj/bin
 PATH=$PATH:/Applications/Matlab/MATLAB_R2014b.app/bin
+WORKON_HOME=$HOME/.virtualenvs
 
-export PATH JAVA_HOME CLASSPATH
+export PATH JAVA_HOME CLASSPATH WORKON_HOME
 # export DYLD_LIBRARY_PATH='/Applications/Matlab/MATLAB_R2014b.app/bin/maci64:/Applications/Matlab/MATLAB_R2014b.app/sys/os/maci64':$DYLD_LIBRARY_PATH
 export EDITOR='vim'
 export LANG=zh_CN
 export VARIABLE=VALUE
 export CHEATCOLORS=true
+
+# Use virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Use Powerline Status
 . /Users/pro/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
