@@ -17,6 +17,8 @@ alias wildog='cd ~/Projects/Repo/wildog.github.com && bundle exec jekyll serve -
 alias centos='ssh wildog@10.211.55.4'
 alias yd='/Applications/Utilities/dict'
 alias mc='LANG=en_US.UTF-8 mc'
+alias xiami='python /Users/pro/Projects/Repo/xiami/xiami.py'
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 #alias aria2c='open -g http://aria2c.com && aria2c'
 
 # Environment Settings
@@ -28,18 +30,21 @@ PATH=.:/usr/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/Library/Python/2.7/bin
 PATH=$PATH:$HOME/Library/Python/2.7/bin
 PATH=$PATH:/usr/local/smlnj/bin
-PATH=$PATH:/Applications/Matlab/MATLAB_R2014b.app/bin
+# PATH=$PATH:/Applications/Matlab/MATLAB_R2014b.app/bin
 WORKON_HOME=$HOME/.virtualenvs
 
 export PATH JAVA_HOME CLASSPATH WORKON_HOME
 # export DYLD_LIBRARY_PATH='/Applications/Matlab/MATLAB_R2014b.app/bin/maci64:/Applications/Matlab/MATLAB_R2014b.app/sys/os/maci64':$DYLD_LIBRARY_PATH
-export EDITOR='vim'
+export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 export LANG=zh_CN
 export VARIABLE=VALUE
 export CHEATCOLORS=true
 
 # Use virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
+
+# Use Tmuxinator
+source ~/.tmuxinator/tmuxinator.zsh
 
 # Use Powerline Status
 . /Users/pro/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
