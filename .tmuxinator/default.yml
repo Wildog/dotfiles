@@ -1,6 +1,6 @@
-# ~/.tmuxinator/vim.yml
+# ~/.tmuxinator/default.yml
 
-name: vim
+name: default
 
 # Optional tmux socket
 # socket_name: foo
@@ -24,9 +24,17 @@ name: vim
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t vim
+# post: tmux -CC attach -t default
+post: tmux select-window -t default:1 && tmux attach -t default
 
 windows:
+  - terminal:
+      layout: 98ad,135x44,0,0[135x31,0,0{90x31,0,0,1,44x31,91,0[44x8,91,0,2,44x22,91,9,3]},135x13,0,32,4]
+      panes:
+        - 
+        - tmux clock
+        - mc
+        - htop
   - editor:
       layout: 68f2,134x43,0,0[135x36,0,0{89x36,0,0,2,45x36,90,0,3},135x7,0,37,4]
       panes:

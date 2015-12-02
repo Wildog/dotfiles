@@ -51,6 +51,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Use Tmuxinator
 source ~/.tmuxinator/tmuxinator.zsh
 
+# default mux on tty1
+source ~/.tmuxinator/default.zsh
+
 # Use Powerline Status
 . /Users/pro/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
