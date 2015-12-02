@@ -239,6 +239,11 @@ nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
 nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
 nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
 nnoremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
+" switch buffer
+nmap <leader>bn :bnext<CR>
+nmap <leader>bp :bprevious<CR>
+nmap <leader>bb :buffers<CR>:buffer<Space>
+nmap <leader>bc :tabnew<CR>
 
 " ---Plugin related---
 "  YouCompleteMe related
