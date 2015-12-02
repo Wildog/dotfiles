@@ -244,6 +244,7 @@ nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprevious<CR>
 nmap <leader>bb :buffers<CR>:buffer<Space>
 nmap <leader>bc :tabnew<CR>
+nmap <leader>bd :bd<CR>
 
 " ---Plugin related---
 "  YouCompleteMe related
