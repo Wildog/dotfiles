@@ -65,17 +65,17 @@ if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[6 q\033\\"
 else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_SR = "\<Esc>]50;CursorShape=2\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    autocmd VimLeave * silent !echo -ne "\033[6 q"
 endif
 " Automatically retab after opening a fila
 au BufReadPost * if &modifiable | retab
 " Automatically located to last position 
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Change default working dir to ~/tmp if current tab is empty
 au BufWinEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
 au TabEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
