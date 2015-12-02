@@ -4,6 +4,7 @@ set nocompatible
 filetype off   
 filetype plugin indent on
 set fileencodings=utf-8,ucs-bom,cp936,gb18030,gbk,gb2312,euc-jp,euc-kr,latin1
+set termencoding=utf-8
 colorscheme desert 
 set t_Co=256
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
@@ -53,6 +54,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 " Macvim setting
 if has('gui_macvim')
+    let g:loaded_noerrmsg = 1
     set transparency=6
     se guifont=Sauce_Code_Powerline_Light:h13
     set antialias
