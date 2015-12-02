@@ -1,6 +1,9 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="Soliah"
-plugins=(git git-extras autojump osx sudo zsh-syntax-highlighting)
+plugins=(git git-extras autojump osx tmux sudo zsh-syntax-highlighting)
+export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART_ONCE=true
+export ZSH_TMUX_AUTOQUIT=true
 source $ZSH/oh-my-zsh.sh
 
 alias vim='mvim'
