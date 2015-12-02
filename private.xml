@@ -83,12 +83,12 @@
         <autogen>
             --KeyToKey--
             KeyCode::FORWARD_DELETE, ModifierFlag::CONTROL_L,
-            KeyCode::PAGEUP
+            KeyCode::PAGEDOWN
         </autogen>
         <autogen>
             --KeyToKey--
             KeyCode::PC_INSERT, ModifierFlag::CONTROL_L,
-            KeyCode::PAGEDOWN
+            KeyCode::PAGEUP
         </autogen>
     </item>
     <item>
