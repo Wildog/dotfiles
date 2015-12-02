@@ -22,6 +22,7 @@ alias yd='/Applications/Utilities/dict'
 alias mc='LANG=en_US.UTF-8 mc'
 alias xiami='python /Users/pro/Projects/Repo/xiami/xiami.py'
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias mux='export FROMSESSION=$(tmux display-message -p "#S") && mux'
 #alias aria2c='open -g http://aria2c.com && aria2c'
 
 # Environment Settings
