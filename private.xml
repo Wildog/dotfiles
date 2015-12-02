@@ -78,6 +78,20 @@
         </autogen>
     </item>
     <item>
+        <name>PageUp/Down (FC660M)</name>
+        <identifier>private.pagectrl</identifier>
+        <autogen>
+            --KeyToKey--
+            KeyCode::FORWARD_DELETE, ModifierFlag::CONTROL_L,
+            KeyCode::PAGEUP
+        </autogen>
+        <autogen>
+            --KeyToKey--
+            KeyCode::PC_INSERT, ModifierFlag::CONTROL_L,
+            KeyCode::PAGEDOWN
+        </autogen>
+    </item>
+    <item>
         <name>Volume/Music Control (FC660M)</name>
         <identifier>private.volumectrl</identifier>
         <autogen>
@@ -97,12 +111,12 @@
         </autogen>
         <autogen>
             --KeyToKey--
-            KeyCode::FORWARD_DELETE, ModifierFlag::CONTROL_L,
+            KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L,
             ConsumerKeyCode::MUSIC_NEXT
         </autogen>
         <autogen>
             --KeyToKey--
-            KeyCode::PC_INSERT, ModifierFlag::CONTROL_L,
+            KeyCode::PC_INSERT, ModifierFlag::SHIFT_L,
             ConsumerKeyCode::MUSIC_PREV
         </autogen>
     </item>
