@@ -23,6 +23,7 @@ alias mc='LANG=en_US.UTF-8 mc'
 alias xiami='python /Users/pro/Projects/Repo/xiami/xiami.py'
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias mux='export FROMSESSION=$(tmux display-message -p "#S") && mux'
+alias q='exit'
 #alias aria2c='open -g http://aria2c.com && aria2c'
 
 # Environment Settings
@@ -40,7 +41,7 @@ WORKON_HOME=$HOME/.virtualenvs
 export PATH JAVA_HOME CLASSPATH WORKON_HOME
 # export DYLD_LIBRARY_PATH='/Applications/Matlab/MATLAB_R2014b.app/bin/maci64:/Applications/Matlab/MATLAB_R2014b.app/sys/os/maci64':$DYLD_LIBRARY_PATH
 export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
-export LANG=zh_CN
+export LANG="zh_CN.UTF-8"
 export VARIABLE=VALUE
 export CHEATCOLORS=true
 
