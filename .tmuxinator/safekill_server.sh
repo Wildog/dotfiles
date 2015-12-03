@@ -33,8 +33,8 @@ function safe_end_procs {
 }
 
 safe_end_tries=0
-max_session=$(tmux list-session | wc -l)
-while [ $safe_end_tries -lt 3 ]; do
+session_count=$(tmux list-session | wc -l)
+while [ $safe_end_tries -lt $session_count ]; do
     safe_end_procs
     safe_end_tries=$[$safe_end_tries+1]
     sleep 0.75
