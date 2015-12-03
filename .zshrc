@@ -46,6 +46,7 @@ export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 export LANG="zh_CN.UTF-8"
 export VARIABLE=VALUE
 export CHEATCOLORS=true
+export HOMEBREW_GITHUB_API_TOKEN=018bf9750f639b50455962cc2f9b296735143914
 
 # Use virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
