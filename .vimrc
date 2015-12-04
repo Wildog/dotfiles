@@ -181,10 +181,10 @@ let NERDTreeShowLineNumbers=0
 let g:EasyMotion_smartcase = 1
 " UltiSnips related conf
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-w>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsListSnippets="<C-tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-w>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 let g:UltiSnipsEditSplit="vertical"
 " Tagbar related conf
 let g:tagbar_left=1
