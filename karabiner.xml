@@ -159,7 +159,11 @@
             <appname>MACVIM</appname>
             <equal>org.vim.MacVim</equal>
         </appdef>
-        <only>MACVIM</only>
+        <appdef>
+            <appname>iTerm2</appname>
+            <equal>com.googlecode.iterm2</equal>
+        </appdef>
+        <only>MACVIM, iTerm2</only>
         <device_only>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_only>
         <autogen>
             --KeyToKey--
