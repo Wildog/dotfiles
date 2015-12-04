@@ -12,6 +12,12 @@ alias vim='mvim'
 alias cdp='popd'
 alias ql='quick-look'
 alias sudo='sudo '
+alias yd='/Applications/Utilities/dict'
+alias mc='LANG=en_US.UTF-8 mc'
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias mux='export FROMSESSION=$(tmux display-message -p "#S") && mux'
+alias q='exit'
+alias xiami='python /Users/pro/Projects/Repo/xiami/xiami.py'
 alias show='defaults write com.apple.finder AppleShowAllFiles -bool true'
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false'
 alias backupon='defaults delete com.apple.iTunes DeviceBackupsDisabled'
@@ -19,14 +25,9 @@ alias backupoff='defaults write com.apple.iTunes DeviceBackupsDisabled -bool YES
 alias vpssync='rsync -vzr --progress --delete ~/Downloads/vpssync/ root@vps.limbo.space::transfer --password-file=/Users/pro/.ssh/rsync.pass'
 alias vps='mosh --ssh="ssh -p 5537 -i ~/.ssh/centos.key" root@vps.limbo.space'
 alias wildog='cd ~/Projects/Repo/wildog.github.com && bundle exec jekyll serve -H 192.168.1.88'
-alias centos='ssh wildog@10.211.55.4'
-alias yd='/Applications/Utilities/dict'
-alias mc='LANG=en_US.UTF-8 mc'
-alias xiami='python /Users/pro/Projects/Repo/xiami/xiami.py'
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias mux='export FROMSESSION=$(tmux display-message -p "#S") && mux'
-alias q='exit'
-#alias aria2c='open -g http://aria2c.com && aria2c'
+
+# Disable Ctrl-s to map it in Vim
+stty stop undef
 
 # Environment Settings
 JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
