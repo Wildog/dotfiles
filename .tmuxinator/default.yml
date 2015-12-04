@@ -40,4 +40,4 @@ windows:
       panes:
         - vi
         - mc
-        - 
+        - cd ~/tmp
