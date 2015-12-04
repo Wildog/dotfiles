@@ -1,11 +1,11 @@
 " Basic settings
 " -------------------------------------
 set nocompatible
-filetype off   
+filetype off
 filetype plugin indent on
 set fileencodings=utf-8,ucs-bom,cp936,gb18030,gbk,gb2312,euc-jp,euc-kr,latin1
 set termencoding=utf-8
-colorscheme desert 
+colorscheme desert
 set t_Co=256
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set history=50                  " keep 50 lines of command line history
@@ -54,34 +54,29 @@ if &t_Co > 2 || has("gui_running")
 endif
 " Macvim setting
 if has('gui_macvim')
-    let g:loaded_noerrmsg = 1
-    set transparency=6
+    set transparency=5
     se guifont=Sauce_Code_Powerline_Light:h13
     set antialias
     set gcr=a:blinkon0
 endif
 " Cursor shape setting
 if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[6 q\033\\"
 else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     autocmd VimLeave * silent !echo -ne "\033[6 q"
 endif
 " Automatically retab after opening a fila
 au BufReadPost * if &modifiable | retab
-" Automatically located to last position 
+" Automatically located to last position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Change default working dir to ~/tmp if current tab is empty
 au BufWinEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
 au TabEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
+" Custom vim-airline initialization
+autocmd User AirlineAfterInit call AirlineInit()
 " Auto mkview and loadview
 " autocmd BufWinLeave *.* mkview
-" autocmd BufWinEnter *.* silent loadview 
+" autocmd BufWinEnter *.* silent loadview
 " --------------------------------------
 
 
@@ -101,10 +96,12 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kannokanno/previm'
 Plugin 'ShowMarks'
+Plugin 'sjl/vitality.vim'
 Plugin 'The-NERD-Commenter'
 Plugin 'Emmet.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'fugitive.vim'
+Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -112,13 +109,18 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'antoyo/vim-licenses'
 call vundle#end()            " required
-" Put Powerline into use
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" Airline related conf
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'powerline'
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#fnamemod = ':p:t'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_buffers = 0
 set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+" set showtabline=2 " Always display the tabline, even if there is only one tab
+ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 " Highlight YAML frontmatter of markdown
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
@@ -133,7 +135,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_semantic_triggers =  {
-    \ 'c' : ['->', '.'], 
+    \ 'c' : ['->', '.'],
     \ 'objc' : ['->', '.'],
     \ 'ocaml' : ['.', '#'],
     \ 'cpp,objcpp' : ['->', '.', '::'],
@@ -151,6 +153,7 @@ let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
 let g:indentLine_enabled=1
 let g:indentLine_char='┆'
 let g:indentLine_color_gui='#5C8A41'
+let g:indentLine_color_term=28
 " Enable html/css only for emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
@@ -233,7 +236,7 @@ imap ∆ <Esc>mz:m+<cr>`za
 imap ˚ <Esc>mz:m-2<cr>`za
 vmap ∆ :m'>+<cr>`<my`>mzgv`yo`z
 vmap ˚ :m'<-2<cr>`>my`<mzgv`yo`z
-" Jump to prev/next hunk/change 
+" Jump to prev/next hunk/change
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 " Open current directory in Finder/iTerm
@@ -245,9 +248,9 @@ nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
 nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
 nnoremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 " switch buffer
-nmap <leader>bn :bnext<CR>
-nmap <leader>bp :bprevious<CR>
-nmap <leader>bb :buffers<CR>:buffer<Space>
+nmap <leader>bn :bnext!<CR>
+nmap <leader>bp :bprevious!<CR>
+nmap <leader>bb :buffers<CR>:buffer!<Space>
 nmap <leader>bc :tabnew<CR>
 nmap <leader>bd :bd<CR>
 
@@ -266,7 +269,7 @@ nmap <leader>f :NERDTree<CR>
 let g:ctrlp_map = '<leader>wf'
 nmap <leader>wr :CtrlPMRU<CR>
 nmap <leader>wt :CtrlPBufTagAll<CR>
-" Toggle IndentLines 
+" Toggle IndentLines
 nmap <silent> ˙ :IndentLinesToggle<CR>
 vmap <silent> ˙ :IndentLinesToggle<CR>
 imap <silent> ˙ <Esc>:IndentLinesToggle<CR>a
@@ -326,10 +329,10 @@ nmap <silent> <leader>vl :loadview<CR>
 nmap <silent> <leader>sm :mksession! ~/.vimview/lastsession.vim<CR>:wviminfo! ~/.vimview/lastsession.viminfo<CR>
 nmap <silent> <leader>sl :source ~/.vimview/lastsession.vim<CR>:rviminfo ~/.vimview/lastsession.viminfo<CR>
 " showmarks(modified) keymappings
-   "\mt : Toggles ShowMarks on and off. 
-   "\mh : Hides an individual mark. 
-   "\ma : Hides all marks in the current buffer. 
-   "\mm : Places the next available mark. 
+   "\mt : Toggles ShowMarks on and off.
+   "\mh : Hides an individual mark.
+   "\ma : Hides all marks in the current buffer.
+   "\mm : Places the next available mark.
 " --------------------------------------
 
 
@@ -337,9 +340,9 @@ nmap <silent> <leader>sl :source ~/.vimview/lastsession.vim<CR>:rviminfo ~/.vimv
 " --------------------------------------
 " Option+c to enter multi-match-copy search mode, paste by "+p
 nnoremap ç :let @+ = ''<cr>:%s//\=CopyMatches(submatch(0))/g
-function! CopyMatches (m) 
-    let @+ .= a:m . "\n" 
-    return a:m 
+function! CopyMatches (m)
+    let @+ .= a:m . "\n"
+    return a:m
 endfunction
 
 " Quick compile and run
@@ -455,6 +458,24 @@ function! TabIsEmpty()
     else
         return 0
     endif
+endfunction
+
+" Custom airline initialization
+function! AirlineInit()
+    let spc = g:airline_symbols.space
+    call airline#parts#define_raw('filename', '%f ')
+    call airline#parts#define_accent('filename', 'red')
+    call airline#parts#define_accent('readonly', 'truered')
+    call airline#parts#define_raw('modified', '%m')
+    call airline#parts#define_accent('modified', 'bright')
+    let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
+    let g:airline_section_b = airline#section#create(['hunks', 'branch', '%<', 'readonly', spc, 'filename', 'modified'])
+    let g:airline_section_c = airline#section#create(['tagbar'])
+    let g:airline_section_gutter = airline#section#create(['%='])
+    let g:airline_section_x = airline#section#create_right(['filetype', 'ffenc'])
+    let g:airline_section_y = airline#section#create(['%1p%%'])
+    let g:airline_section_z = airline#section#create(['linenr', ':%v '])
+    let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
 endfunction
 " --------------------------------------
 

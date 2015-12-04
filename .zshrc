@@ -16,6 +16,7 @@ alias yd='/Applications/Utilities/dict'
 alias mc='LANG=en_US.UTF-8 mc'
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias mux='export FROMSESSION=$(tmux display-message -p "#S") && mux'
+alias pipua='pip list --outdated | cut -d ' ' -f1 | xargs -n1 sudo pip install -U'
 alias q='exit'
 alias xiami='python /Users/pro/Projects/Repo/xiami/xiami.py'
 alias show='defaults write com.apple.finder AppleShowAllFiles -bool true'
@@ -59,7 +60,7 @@ source ~/.tmuxinator/tmuxinator.zsh
 source ~/.tmuxinator/default.zsh
 
 # Use Powerline Status
-. /Users/pro/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+. /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Autocorrection
 zstyle ':completion:*' verbose true
