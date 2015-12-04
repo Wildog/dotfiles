@@ -110,6 +110,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'antoyo/vim-licenses'
 call vundle#end()            " required
 " Put Powerline into use
 python from powerline.vim import setup as powerline_setup
@@ -190,6 +191,9 @@ let g:tagbar_left=1
 let g:tagbar_width=30
 let g:tagbar_autofocus=1
 let g:tagbar_singleclick = 1
+" License related conf
+let g:licenses_copyright_holders_name = 'Wildog <in@limbo.space>'
+let g:licenses_authors_name = 'Wildog <in@limbo.space>'
 " Taglist related conf
 " let Tlist_Auto_Open=0 " Let the tag list open automatically
 " let Tlist_Auto_Update=1 " Let the tag list update automatically
