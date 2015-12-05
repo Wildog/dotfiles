@@ -49,6 +49,7 @@ export LANG="zh_CN.UTF-8"
 export VARIABLE=VALUE
 export CHEATCOLORS=true
 export HOMEBREW_GITHUB_API_TOKEN=018bf9750f639b50455962cc2f9b296735143914
+export XDG_CONFIG_DIRS=$HOME/.config
 
 # Use virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
@@ -58,6 +59,9 @@ source ~/.tmuxinator/tmuxinator.zsh
 
 # default mux on tty1
 source ~/.tmuxinator/default.zsh
+
+# Use prompline
+# source ~/.vim/shell_prompt.sh
 
 # Use Powerline Status
 . /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
