@@ -165,16 +165,16 @@ autocmd FileType html,css EmmetInstall
 let g:previm_open_cmd = 'open -g'
 map <silent> <leader>p :PrevimOpen<CR>
 " Syntastic related conf
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['python']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_warning_symbol = ">*"
-let g:syntastic_enable_balloons = 0
+let g:syntastic_enable_balloons = 1
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = {
     \ "mode": "passive",
-    \ "active_filetypes": [],
+    \ "active_filetypes": ['java', 'python'],
     \ "passive_filetypes": [] }
-" let g:syntastic_check_on_open = 1
 " let g:syntastic_auto_jump = 1
 " CtrlP related
 let g:ctrlp_use_caching = 1
