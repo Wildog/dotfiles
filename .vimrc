@@ -17,7 +17,6 @@ set isk+=-                      " set *-* as word
 set matchpairs=(:),{:},[:],<:>  " add match pair <:> for html
 set viewdir=$HOME/.vimview      " path to save view
 set shell=/bin/zsh              " set zsh as shell
-"set shellcmdflag+=i             " source .zshrc
 set guioptions-=r               " Hide scrollbar
 set guioptions-=L               " Hide leftscrollbar
 set fillchars+=vert:\┊
@@ -72,6 +71,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Change default working dir to ~/tmp if current tab is empty
 au BufWinEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
 au TabEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
+" diable readonly warning
+au BufEnter * set noro
 " Custom vim-airline initialization
 autocmd User AirlineAfterInit call AirlineInit()
 " Auto mkview and loadview
@@ -86,27 +87,31 @@ autocmd User AirlineAfterInit call AirlineInit()
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'tabular'
-Plugin 'Tagbar'
+Plugin 'bling/vim-airline'
 Plugin 'exvim/ex-utility'
 Plugin 'exvim/ex-project'
-Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'kannokanno/previm'
-Plugin 'ShowMarks'
-Plugin 'sjl/vitality.vim'
-Plugin 'The-NERD-Commenter'
-Plugin 'Emmet.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'fugitive.vim'
-Plugin 'bling/vim-airline'
+Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'The-NERD-Commenter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Tagbar'
+Plugin 'tabular'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'sjl/vitality.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'fugitive.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'ShowMarks'
+Plugin 'Emmet.vim'
+Plugin 'kannokanno/previm'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-capslock'
+Plugin 'honza/vim-snippets'
 Plugin 'antoyo/vim-licenses'
 call vundle#end()            " required
 " Airline related conf
@@ -147,7 +152,6 @@ let g:ycm_semantic_triggers =  {
     \ 'erlang' : [':'] }
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-" let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar:/Users/pro/algs4/stdlib.jar'
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
 " IndentLine related conf
 let g:indentLine_enabled=1
@@ -159,7 +163,7 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 " Previm Markdown
 let g:previm_open_cmd = 'open -g'
-map <silent> <C-m> :PrevimOpen<CR>
+map <silent> <leader>p :PrevimOpen<CR>
 " Syntastic related conf
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_always_populate_loc_list = 1
@@ -172,10 +176,20 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": [] }
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_auto_jump = 1
-nmap <silent> <leader>lr :SyntasticReset<CR>
 " CtrlP related
-" let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 't'
+let g:ctrlp_max_depth = 10
+let g:ctrlp_extensions = ['bookmarkdir', 'dir']
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("t")': ['<c-o>'],
+  \ 'OpenMulti()':          ['<c-t>'],
+  \ }
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|boot|local|oh-my-zsh|ssh|dropbox|Trash|ShadowsocksX|bash_profile|bash_sessions|aria2|asciinema|pip|virtualenvs|cheat|gem|lldb|node-gyp|hg|svn|cache|npm|vimview|vim|javacomplete2)$)|(Library|Documents|Music|Photos).*',
+  \ 'file': '\v\.(DS_Store|mp3|so|jpg|qvnote|qvnotebook|png|jpeg|swp|swo|swm|swn|swl|nmsv|session|history|historynew|pdf|tiff)$',
+  \ }
 " NERDTree related conf
 let NERDTreeWinSize=30
 let NERDTreeQuitOnOpen=1
@@ -197,18 +211,6 @@ let g:tagbar_singleclick = 1
 " License related conf
 let g:licenses_copyright_holders_name = 'Wildog <in@limbo.space>'
 let g:licenses_authors_name = 'Wildog <in@limbo.space>'
-" Taglist related conf
-" let Tlist_Auto_Open=0 " Let the tag list open automatically
-" let Tlist_Auto_Update=1 " Let the tag list update automatically
-" let Tlist_Compact_Format=0 " Hide help menu
-" let Tlist_Enable_Fold_Column=0 "do show folding tree
-" let Tlist_Show_One_File=0 " Only show the tag list of current file
-" let Tlist_GainFocus_On_ToggleOpen=1
-" let Tlist_Exist_OnlyWindow=1 " If you are the last, kill yourself
-" let Tlist_File_Fold_Auto_Close=1 " Fold closed other trees
-" let Tlist_Sort_Type="name" " Order by name
-" let Tlist_WinWidth=30 " Set the window 40 cols wide.
-" let Tlist_Close_On_Select=1 " Close the list when a item is selected
 " --------------------------------------
 
 
@@ -229,7 +231,7 @@ nmap <silent> [[ ?{<CR>w99[{
 nmap <silent> ][ :/}<CR>b99]}
 nmap <silent> ]] j0[[%:/{<CR>
 nmap <silent> [] k$][%?}<CR>
-" Move a line of text using option+[jk]
+" Move a line of text <option+j/k>
 nmap ∆ mz:m+<cr>`z
 nmap ˚ mz:m-2<cr>`z
 imap ∆ <Esc>mz:m+<cr>`za
@@ -237,8 +239,8 @@ imap ˚ <Esc>mz:m-2<cr>`za
 vmap ∆ :m'>+<cr>`<my`>mzgv`yo`z
 vmap ˚ :m'<-2<cr>`>my`<mzgv`yo`z
 " Jump to prev/next hunk/change
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>GutterNextHunk
+nmap [h <Plug>GutterPrevHunk
 " Open current directory in Finder/iTerm
 nmap <silent> <leader>of :silent !open .<CR>
 nmap <silent> <leader>ot :silent !osascript ~/Dropbox/Confs/terminalcommandhere-newwin.applescript %:p:h<CR>
@@ -256,11 +258,11 @@ nmap <leader>bd :bd<CR>
 
 " ---Plugin related---
 "  YouCompleteMe related
-let g:ycm_key_detailed_diagnostics = '<leader>i'
+let g:ycm_key_detailed_diagnostics = '<leader>g'
 let g:ycm_key_invoke_completion = '<C-f>'
-nmap <silent> <leader>g :call Diags()<CR>
 nmap <silent> <leader>d :YcmCompleter GoTo<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
+nmap <silent> <leader>i :YcmCompleter FixIt<CR>
 " Open Taglist
 nmap <leader>t :TagbarToggle<CR>
 nmap <leader>r :EXProjectToggle<CR>
@@ -269,38 +271,33 @@ nmap <leader>f :NERDTree<CR>
 let g:ctrlp_map = '<leader>wf'
 nmap <leader>wr :CtrlPMRU<CR>
 nmap <leader>wt :CtrlPBufTagAll<CR>
-" Toggle IndentLines
+nmap <leader>wd :CtrlPDir ~<CR>
+nmap <leader>wb :CtrlPBookmarkDir<CR>
+" Toggle IndentLines <Option-h>
 nmap <silent> ˙ :IndentLinesToggle<CR>
 vmap <silent> ˙ :IndentLinesToggle<CR>
 imap <silent> ˙ <Esc>:IndentLinesToggle<CR>a
-" Toggle GitGutter
-nmap <silent> © :GitGutterToggle<CR>
-vmap <silent> © :GitGutterToggle<CR>
-imap <silent> © <Esc>:GitGutterToggle<CR>
-nmap <Leader>hp <Plug>GitGutterPreviewHunk <C-w><C-j>
-" Auto-complete (using omni/ycm)
+" Toggle Gutter <Option-g>
+nmap <silent> © :GutterToggle<CR>
+vmap <silent> © :GutterToggle<CR>
+imap <silent> © <Esc>:GutterToggle<CR>
+nmap <Leader>hp <Plug>GutterPreviewHunk <C-w><C-j>
+" Auto-complete (using omni/ycm) <Option-p/l/o>
 imap π <C-p>
 imap ¬ <C-x><C-l>
 imap ø <C-x><C-o>
-imap ø <C-x><C-o>
-" Align by [=/|] (using Tabular)
+" Align by '=' (using Tabular) <Option-=>
 nmap ≠ :Tab /=<CR>
 vmap ≠ :Tab /=<CR>
 imap ≠ <Esc>:Tab /=<CR>
-nmap « :Tab /\|<CR>
-vmap « :Tab /\|<CR>
-imap « <Esc>:Tab /\|<CR>
-nmap … :Tab /:<CR>
-vmap … :Tab /:<CR>
-imap … <Esc>:Tab /:<CR>
-" MultipleCursorsFind
+" MultipleCursorsFind <Option-f>
 nmap ƒ :MultipleCursorsFind
 " EasyMotion
 nmap / <Plug>(easymotion-sn)
 
 
 " ---Misc---
-" Fix tilde/escape
+" Fix tilde/escape on FC660 keyboard
 imap <S-Esc> ~
 nmap <S-Esc> ~
 vmap <S-Esc> ~
@@ -313,13 +310,12 @@ nnoremap <silent> <space> za
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Paste last yank(after deletion) or just last deleted
 nmap <C-p> "0p
-nmap π "0P
-" Show location list
-nmap <leader>lo :lopen<CR>
+" Show location list (ycm diagnostic list)
 nmap <leader>ln :lne<CR>
 nmap <leader>lp :lp<CR>
-nmap <leader>lf :lfirst<CR>
-nmap <leader>ll :llast<CR>
+nmap <silent> <leader>ll :call Diags()<CR>
+nmap <silent> <leader>lo :call Diags()<CR>
+nmap <silent> <leader>lr :SyntasticReset<CR>
 " Open new tab from current split window
 nnoremap <C-w><C-t> <C-w><S-t>
 " mkview and loadview
@@ -328,6 +324,8 @@ nmap <silent> <leader>vl :loadview<CR>
 " mksession and source session (for last session)
 nmap <silent> <leader>sm :mksession! ~/.vimview/lastsession.vim<CR>:wviminfo! ~/.vimview/lastsession.viminfo<CR>
 nmap <silent> <leader>sl :source ~/.vimview/lastsession.vim<CR>:rviminfo ~/.vimview/lastsession.viminfo<CR>
+" Save with sudo
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " showmarks(modified) keymappings
    "\mt : Toggles ShowMarks on and off.
    "\mh : Hides an individual mark.
@@ -338,8 +336,26 @@ nmap <silent> <leader>sl :source ~/.vimview/lastsession.vim<CR>:rviminfo ~/.vimv
 
 " Custom functions
 " --------------------------------------
+" Custom airline initialization
+function! AirlineInit()
+    let spc = g:airline_symbols.space
+    call airline#parts#define_raw('filename', '%f ')
+    call airline#parts#define_accent('filename', 'red')
+    call airline#parts#define_accent('readonly', 'truered')
+    call airline#parts#define_raw('modified', '%m')
+    call airline#parts#define_accent('modified', 'bright')
+    let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
+    let g:airline_section_b = airline#section#create(['hunks', 'branch', '%<', 'readonly', spc, 'filename', 'modified'])
+    let g:airline_section_c = airline#section#create(['tagbar'])
+    let g:airline_section_gutter = airline#section#create(['%='])
+    let g:airline_section_x = airline#section#create_right(['filetype', 'ffenc'])
+    let g:airline_section_y = airline#section#create(['%1p%%'])
+    let g:airline_section_z = airline#section#create(['linenr', ':%v '])
+    let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
+endfunction
+
 " Option+c to enter multi-match-copy search mode, paste by "+p
-nnoremap ç :let @+ = ''<cr>:%s//\=CopyMatches(submatch(0))/g
+" nmap ç :let @+ = ''<cr>:%s//\=CopyMatches(submatch(0))/g
 function! CopyMatches (m)
     let @+ .= a:m . "\n"
     return a:m
@@ -458,24 +474,6 @@ function! TabIsEmpty()
     else
         return 0
     endif
-endfunction
-
-" Custom airline initialization
-function! AirlineInit()
-    let spc = g:airline_symbols.space
-    call airline#parts#define_raw('filename', '%f ')
-    call airline#parts#define_accent('filename', 'red')
-    call airline#parts#define_accent('readonly', 'truered')
-    call airline#parts#define_raw('modified', '%m')
-    call airline#parts#define_accent('modified', 'bright')
-    let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
-    let g:airline_section_b = airline#section#create(['hunks', 'branch', '%<', 'readonly', spc, 'filename', 'modified'])
-    let g:airline_section_c = airline#section#create(['tagbar'])
-    let g:airline_section_gutter = airline#section#create(['%='])
-    let g:airline_section_x = airline#section#create_right(['filetype', 'ffenc'])
-    let g:airline_section_y = airline#section#create(['%1p%%'])
-    let g:airline_section_z = airline#section#create(['linenr', ':%v '])
-    let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
 endfunction
 " --------------------------------------
 
