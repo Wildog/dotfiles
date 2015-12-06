@@ -185,6 +185,7 @@ let g:syntastic_mode_map = {
 " let g:syntastic_auto_jump = 1
 " CtrlP related
 let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_max_depth = 10
