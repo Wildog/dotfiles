@@ -109,7 +109,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'fugitive.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ShowMarks'
-Plugin 'eiginn/netrw'
 Plugin 'Emmet.vim'
 Plugin 'kannokanno/previm'
 Plugin 'plasticboy/vim-markdown'
@@ -117,6 +116,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-capslock'
 Plugin 'honza/vim-snippets'
 Plugin 'antoyo/vim-licenses'
+Plugin 'mattn/webapi-vim'
+Plugin 'Wildog/airline-weather.vim'
 call vundle#end()            " required
 " Airline related conf
 let g:airline_powerline_fonts = 1
@@ -127,6 +128,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_buffers = 0
+" airline-weather related conf
+let g:weather#area = 'xuzhou,china'
 " Highlight YAML frontmatter of markdown
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
@@ -358,7 +361,7 @@ function! AirlineInit()
     let g:airline_section_x = airline#section#create_right(['filetype', 'ffenc'])
     let g:airline_section_y = airline#section#create(['%1p%%'])
     let g:airline_section_z = airline#section#create(['linenr', ':%v '])
-    let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
+    let g:airline_section_warning = airline#section#create(['syntastic', 'whitespace'])
 endfunction
 
 " Option+c to enter multi-match-copy search mode, paste by "+p
