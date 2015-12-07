@@ -177,6 +177,10 @@ map <silent> <leader>p :PrevimOpen<CR>
 let g:NERDSpaceDelims = 1
 " Syntastic related conf
 let g:syntastic_python_checkers = ['python']
+let g:syntastic_java_checkers = ['checkstyle', 'javac']
+let g:syntastic_java_checkstyle_classpath = "~/algs4/checkstyle-6.13-all.jar"
+let g:syntastic_java_checkstyle_conf_file = "~/algs4/google_checks.xml"
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_warning_symbol = ">*"
 let g:syntastic_enable_balloons = 1
