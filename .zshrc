@@ -26,6 +26,7 @@ alias backupoff='defaults write com.apple.iTunes DeviceBackupsDisabled -bool YES
 alias vpssync='rsync -vzr --progress --delete ~/Downloads/vpssync/ root@vps.limbo.space::transfer --password-file=/Users/pro/.ssh/rsync.pass'
 alias vps='mosh --ssh="ssh -p 5537 -i ~/.ssh/centos.key" root@vps.limbo.space'
 alias wildog='cd ~/Projects/Repo/wildog.github.com && bundle exec jekyll serve -H 192.168.1.88'
+alias checkstyle='checkstyle -c ~/algs4/google_checks.xml'
 
 # Disable Ctrl-s to map it in Vim
 stty stop undef
