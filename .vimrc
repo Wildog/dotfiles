@@ -67,6 +67,10 @@ if exists('$TMUX')
 else
     autocmd VimLeave * silent !echo -ne "\033[6 q"
 endif
+" Disable IME back to normal mode
+set noimdisable
+autocmd! InsertLeave * set imdisable|set iminsert=0
+autocmd! InsertEnter * set noimdisable|set iminsert=0
 " Automatically retab after opening a fila
 au BufReadPost * if &modifiable | retab
 " Automatically located to last position
@@ -128,6 +132,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1 "tab number
 " airline-weather related conf
 let g:weather#area = 'xuzhou,china'
 " Highlight YAML frontmatter of markdown
@@ -158,10 +163,10 @@ let g:ycm_semantic_triggers =  {
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
 " JCommenter related conf
-autocmd FileType java let b:jcommenter_class_author='Wildog (in@limbo.space)'
-autocmd FileType java let b:jcommenter_file_author='Wildog (in@limbo.space)'
 autocmd FileType java source ~/.vim/macros/jcommenter.vim
 autocmd FileType java map <leader>cj :call JCommentWriter()<CR>
+autocmd FileType java let b:jcommenter_file_author='Wildog (in@limbo.space)'
+autocmd FileType java let b:jcommenter_class_author='Wildog (in@limbo.space)'
 " IndentLine related conf
 let g:indentLine_enabled=1
 let g:indentLine_char='┆'
