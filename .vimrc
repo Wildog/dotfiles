@@ -266,7 +266,7 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 " Open current directory in Finder/iTerm
 nmap <silent> <leader>of :silent !open .<CR>
-nmap <silent> <leader>ot :silent !osascript ~/Dropbox/Confs/terminalcommandhere-newwin.applescript %:p:h<CR>
+nmap <silent> <leader>ot :silent !osascript ~/Library/Services/terminalcommandhere-newwin.applescript %:p:h<CR>
 " smooth scroll
 nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
 nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
