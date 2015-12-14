@@ -171,9 +171,8 @@ autocmd FileType java let b:jcommenter_class_author='Wildog (in@limbo.space)'
 let java_highlight_functions = 1
 " EasyTags related conf
 " let g:easytags_syntax_keyword = 'always'
-" let g:easytags_include_members = 1
-let g:easytags_events = ['BufWritePost']
-let g:easytags_always_enabled = 1
+let g:easytags_auto_highlight = 0
+let g:easytags_include_members = 1
 let g:easytags_async = 1
 let g:easytags_by_filetype = '~/.tags'
 " IndentLine related conf
