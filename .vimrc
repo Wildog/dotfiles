@@ -3,6 +3,7 @@
 set nocompatible
 filetype off
 filetype plugin indent on
+syntax on
 set fileencodings=utf-8,ucs-bom,cp936,gb18030,gbk,gb2312,euc-jp,euc-kr,latin1
 set termencoding=utf-8
 colorscheme desert
@@ -49,11 +50,6 @@ set timeoutlen=3000 ttimeoutlen=0
 if has('mouse')
   set mouse=a
 endif
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-endif
 " Macvim setting
 if has('gui_macvim')
     set transparency=5
@@ -71,6 +67,9 @@ endif
 set noimdisable
 autocmd! InsertLeave * set imdisable|set iminsert=0
 autocmd! InsertEnter * set noimdisable|set iminsert=0
+" Automatically insert java class template
+autocmd BufNewFile *.java
+  \ exe "normal Opublic class " . expand('%:t:r') . " {\n}\<Esc>1G"
 " Automatically retab after opening a fila
 au BufReadPost * if &modifiable | retab
 " Automatically located to last position
@@ -104,6 +103,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'The-NERD-Commenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Tagbar'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 Plugin 'tabular'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
@@ -167,6 +168,14 @@ autocmd FileType java source ~/.vim/macros/jcommenter.vim
 autocmd FileType java map <leader>cj :call JCommentWriter()<CR>
 autocmd FileType java let b:jcommenter_file_author='Wildog (in@limbo.space)'
 autocmd FileType java let b:jcommenter_class_author='Wildog (in@limbo.space)'
+let java_highlight_functions = 1
+" EasyTags related conf
+" let g:easytags_syntax_keyword = 'always'
+" let g:easytags_include_members = 1
+let g:easytags_events = ['BufWritePost']
+let g:easytags_always_enabled = 1
+let g:easytags_async = 1
+let g:easytags_by_filetype = '~/.tags'
 " IndentLine related conf
 let g:indentLine_enabled=1
 let g:indentLine_char='┆'
