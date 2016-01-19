@@ -123,6 +123,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'antoyo/vim-licenses'
 Plugin 'mattn/webapi-vim'
 Plugin 'Wildog/airline-weather.vim'
+Plugin 'rustushki/JavaImp.vim'
 call vundle#end()            " required
 " Airline related conf
 let g:airline_powerline_fonts = 1
@@ -161,6 +162,9 @@ let g:ycm_semantic_triggers =  {
     \ 'ruby' : ['.', '::'],
     \ 'lua' : ['.', ':'],
     \ 'erlang' : [':'] }
+" JavaImp related conf
+let g:JavaImpPaths = $HOME."/algs4/src"
+let g:JavaImpDataDir = $HOME."/.cache/javaimp"
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
@@ -288,12 +292,16 @@ nmap <leader>bb :buffers<CR>:buffer!<Space>
 nmap <leader>bc :tabnew<CR>
 nmap <leader>bd :bd<CR>"}}}
 " ---Plugin related---"{{{
-"  YouCompleteMe related
+" YouCompleteMe related
 let g:ycm_key_detailed_diagnostics = '<leader>g'
 let g:ycm_key_invoke_completion = '<C-f>'
 nmap <silent> <leader>d :YcmCompleter GoTo<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
 nmap <silent> <leader>i :YcmCompleter FixIt<CR>
+" JavaImp related
+nmap <leader>ji :JavaImpSilent<CR>
+nmap <leader>js :JavaImpSort<CR>
+nmap <leader>jf :JavaImpFile<CR>
 " Open Taglist
 nmap <leader>t :TagbarToggle<CR>
 nmap <leader>r :EXProjectToggle<CR>
