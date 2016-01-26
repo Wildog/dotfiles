@@ -3,11 +3,6 @@ ZSH_THEME="Soliah"
 plugins=(git git-extras autojump osx sudo zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-export ZSH_TMUX_AUTOSTART=true
-export ZSH_TMUX_AUTOSTART_ONCE=true
-export ZSH_TMUX_AUTOQUIT=true
-source $HOME/.tmuxinator/tmux.plugin.zsh
-
 alias vim='mvim'
 alias cdp='popd'
 alias ql='quick-look'
@@ -56,11 +51,15 @@ export HOMEBREW_GITHUB_API_TOKEN=b98f0f2b3b485a6269622877d8e67b92cbe0750e
 # Use virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Use Tmuxinator
+# Tmux related
+if [ $TERM = "xterm-256color" ]; then
+    export ZSH_TMUX_AUTOSTART=true
+    export ZSH_TMUX_AUTOSTART_ONCE=true
+    export ZSH_TMUX_AUTOQUIT=true
+fi
+source $HOME/.tmuxinator/tmux.plugin.zsh
 source ~/.tmuxinator/tmuxinator.zsh
-
-# default mux on tty1
-source ~/.tmuxinator/default.zsh
+source ~/.tmuxinator/default.zsh # default mux on tty1
 
 # Use Powerline Status
 . /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
