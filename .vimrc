@@ -137,7 +137,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 "tab number
 " airline-weather related conf
-let g:weather#area = 'chongqing,china'
+let g:weather#area = 'xuzhou,china'
 " Highlight YAML frontmatter of markdown
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
