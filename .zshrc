@@ -23,6 +23,8 @@ alias vps='mosh --ssh="ssh -p 5537 -i ~/.ssh/centos.key" root@vps.limbo.space'
 alias aliyun='ssh -p 5537 -i ~/.ssh/aliyun root@121.42.176.74'
 alias wildog='cd ~/Projects/Repo/wildog.github.com && bundle exec jekyll serve -H 192.168.1.88'
 alias checkstyle='checkstyle -c ~/algs4/google_checks.xml'
+alias tomcat_start='/usr/local/Cellar/tomcat/8.0.32/libexec/bin/startup.sh'
+alias tomcat_stop='/usr/local/Cellar/tomcat/8.0.32/libexec/bin/shutdown.sh'
 
 # Disable Ctrl-s to map it in Vim
 stty stop undef
@@ -30,6 +32,7 @@ stty stop undef
 # Environment Settings
 JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
 CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:~/.vim/autoload:~/algs4/algs4.jar:~/algs4/mysql.jar
+export CATALINA_HOME=/usr/local/Cellar/tomcat/8.0.32/libexec
 PATH=$PATH:$JAVA_HOME/bin
 
 PATH=.:/usr/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:/opt/X11/bin
