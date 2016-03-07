@@ -124,6 +124,7 @@ Plugin 'antoyo/vim-licenses'
 Plugin 'mattn/webapi-vim'
 Plugin 'Wildog/airline-weather.vim'
 Plugin 'rustushki/JavaImp.vim'
+Plugin 'rizzatti/dash.vim'
 call vundle#end()            " required
 " Airline related conf
 let g:airline_powerline_fonts = 1
@@ -293,15 +294,17 @@ nmap <leader>bc :tabnew<CR>
 nmap <leader>bd :bd<CR>"}}}
 " ---Plugin related---"{{{
 " YouCompleteMe related
-let g:ycm_key_detailed_diagnostics = '<leader>g'
+let g:ycm_key_detailed_diagnostics = '<leader>d'
 let g:ycm_key_invoke_completion = '<C-f>'
-nmap <silent> <leader>d :YcmCompleter GoTo<CR>
+nmap <silent> <leader>g :YcmCompleter GoTo<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
 nmap <silent> <leader>i :YcmCompleter FixIt<CR>
 " JavaImp related
 nmap <leader>ji :JavaImpSilent<CR>
 nmap <leader>js :JavaImpSort<CR>
 nmap <leader>jf :JavaImpFile<CR>
+" Dash.vim related
+nmap <silent> <D-C-/> <Plug>DashSearch
 " Open Taglist
 nmap <leader>t :TagbarToggle<CR>
 nmap <leader>r :EXProjectToggle<CR>
