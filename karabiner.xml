@@ -206,11 +206,16 @@
             <equal>org.vim.MacVim</equal>
         </appdef>
         <appdef>
+            <appname>intellij</appname>
+            <equal>com.jetbrains.intellij</equal>
+        </appdef>
+        <appdef>
             <appname>iTerm2</appname>
             <equal>com.googlecode.iterm2</equal>
         </appdef>
         <not>MACVIM</not>
         <not>iTerm2</not>
+        <not>intellij</not>
         <block>
           <autogen>
             __KeyToKey__
