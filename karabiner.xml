@@ -217,10 +217,15 @@
             <appname>xcode</appname>
             <equal>com.apple.dt.Xcode</equal>
         </appdef>
+        <appdef>
+            <appname>quiver</appname>
+            <equal>com.happenapps.Quiver</equal>
+        </appdef>
         <not>MACVIM</not>
         <not>iTerm2</not>
         <not>intellij</not>
         <not>xcode</not>
+        <not>quiver</not>
         <block>
           <autogen>
             __KeyToKey__
