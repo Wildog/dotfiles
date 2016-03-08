@@ -213,9 +213,14 @@
             <appname>iTerm2</appname>
             <equal>com.googlecode.iterm2</equal>
         </appdef>
+        <appdef>
+            <appname>xcode</appname>
+            <equal>com.apple.dt.Xcode</equal>
+        </appdef>
         <not>MACVIM</not>
         <not>iTerm2</not>
         <not>intellij</not>
+        <not>xcode</not>
         <block>
           <autogen>
             __KeyToKey__
