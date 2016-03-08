@@ -70,6 +70,9 @@ autocmd! InsertEnter * set noimdisable|set iminsert=0
 " Automatically insert java class template
 autocmd BufNewFile *.java
   \ exe "normal Opublic class " . expand('%:t:r') . " {\n}\<Esc>1G"
+" stop indentLine from messing with json
+autocmd InsertEnter *.json setlocal concealcursor=
+autocmd InsertLeave *.json setlocal concealcursor=inc
 " Automatically retab after opening a fila
 au BufReadPost * if &modifiable | retab
 " Automatically located to last position
