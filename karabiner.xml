@@ -195,86 +195,176 @@
         </autogen>
     </item>
     <item>
-      <name>Insert Mode Commands</name>
-      <item>
-        <name>Enable Insert Mode Commands</name>
-        <appendix>Ctrl-w delete preceding word (Shift+Option+Left, Delete)</appendix>
-        <appendix>Ctrl-u delete preceding line (Shift+Command+Left, Delete)</appendix>
-        <identifier>option.vim_insert_mode</identifier>
-        <appdef>
-            <appname>MACVIM</appname>
-            <equal>org.vim.MacVim</equal>
-        </appdef>
-        <appdef>
-            <appname>intellij</appname>
-            <equal>com.jetbrains.intellij</equal>
-        </appdef>
-        <appdef>
-            <appname>iTerm2</appname>
-            <equal>com.googlecode.iterm2</equal>
-        </appdef>
-        <appdef>
-            <appname>xcode</appname>
-            <equal>com.apple.dt.Xcode</equal>
-        </appdef>
-        <appdef>
-            <appname>quiver</appname>
-            <equal>com.happenapps.Quiver</equal>
-        </appdef>
-        <not>MACVIM</not>
-        <not>iTerm2</not>
-        <not>intellij</not>
-        <not>xcode</not>
-        <not>quiver</not>
-        <block>
-          <autogen>
-            __KeyToKey__
-            KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
-            KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::DELETE
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
-            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-            KeyCode::DELETE
-          </autogen>
-        </block>
-      </item>
+        <name>Insert Mode Commands</name>
+        <item>
+            <name>Enable Insert Mode Commands</name>
+            <appendix>Ctrl-w delete preceding word (Shift+Option+Left, Delete)</appendix>
+            <appendix>Ctrl-u delete preceding line (Shift+Command+Left, Delete)</appendix>
+            <identifier>option.vim_insert_mode</identifier>
+            <appdef>
+                <appname>MACVIM</appname>
+                <equal>org.vim.MacVim</equal>
+            </appdef>
+            <appdef>
+                <appname>intellij</appname>
+                <equal>com.jetbrains.intellij</equal>
+            </appdef>
+            <appdef>
+                <appname>iTerm2</appname>
+                <equal>com.googlecode.iterm2</equal>
+            </appdef>
+            <appdef>
+                <appname>xcode</appname>
+                <equal>com.apple.dt.Xcode</equal>
+            </appdef>
+            <appdef>
+                <appname>quiver</appname>
+                <equal>com.happenapps.Quiver</equal>
+            </appdef>
+            <not>MACVIM</not>
+            <not>iTerm2</not>
+            <not>intellij</not>
+            <not>xcode</not>
+            <not>quiver</not>
+            <block>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+                    KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+                    KeyCode::DELETE
+                </autogen>
+                <autogen>
+                    __KeyToKey__
+                    KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+                    KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+                    KeyCode::DELETE
+                </autogen>
+            </block>
+        </item>
     </item>
     <item>
-      <name>Reverse scrolling direction (not for trackpad)</name>
-      <item>
-        <name style="important">Important:</name>
-        <appendix>Items are exclusive. Choose one item.</appendix>
-      </item>
-      <item>
-        <name>Reverse Vertical &amp; Horizontal Scrolling</name>
-        <identifier>myremap.reverse_both_scrolling</identifier>
-        <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
-        <autogen>
-          __FlipScrollWheel__
-          Option::FLIPSCROLLWHEEL_HORIZONTAL,
-          Option::FLIPSCROLLWHEEL_VERTICAL,
-        </autogen>
-      </item>
-      <item>
-        <name>Reverse Vertical Scrolling</name>
-        <identifier>myremap.reverse_vertical_scrolling</identifier>
-        <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
-        <autogen>
-          __FlipScrollWheel__
-          Option::FLIPSCROLLWHEEL_VERTICAL,
-        </autogen>
-      </item>
-      <item>
-        <name>Reverse Horizontal Scrolling</name>
-        <identifier>myremap.reverse_horizontal_scrolling</identifier>
-        <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
-        <autogen>
-          __FlipScrollWheel__
-          Option::FLIPSCROLLWHEEL_HORIZONTAL,
-        </autogen>
-      </item>
+        <name>Reverse scrolling direction (not for trackpad)</name>
+        <item>
+            <name style="important">Important:</name>
+            <appendix>Items are exclusive. Choose one item.</appendix>
+        </item>
+        <item>
+            <name>Reverse Vertical &amp; Horizontal Scrolling</name>
+            <identifier>myremap.reverse_both_scrolling</identifier>
+            <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+            <autogen>
+                __FlipScrollWheel__
+                Option::FLIPSCROLLWHEEL_HORIZONTAL,
+                Option::FLIPSCROLLWHEEL_VERTICAL,
+            </autogen>
+        </item>
+        <item>
+            <name>Reverse Vertical Scrolling</name>
+            <identifier>myremap.reverse_vertical_scrolling</identifier>
+            <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+            <autogen>
+                __FlipScrollWheel__
+                Option::FLIPSCROLLWHEEL_VERTICAL,
+            </autogen>
+        </item>
+        <item>
+            <name>Reverse Horizontal Scrolling</name>
+            <identifier>myremap.reverse_horizontal_scrolling</identifier>
+            <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+            <autogen>
+                __FlipScrollWheel__
+                Option::FLIPSCROLLWHEEL_HORIZONTAL,
+            </autogen>
+        </item>
     </item>    
+
+    <devicevendordef>
+        <vendorname>MICROSOFT</vendorname>
+        <vendorid>0x045e</vendorid>
+    </devicevendordef>
+
+    <deviceproductdef>
+        <productname>SCULPT_COMFORT</productname>
+        <productid>0x07a2</productid>
+    </deviceproductdef>
+    <item>
+        <name>Windows Button to LaunchPad (Microsoft Sculpt Comfort Mouse)</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.win_button</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::COMMAND_L,
+            KeyCode::LAUNCHPAD
+        </autogen>
+    </item>
+    <item>
+        <name>Slide Down to Next Space (Microsoft Sculpt Comfort Mouse)</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.slide_up</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __KeyToKey__
+            PointingButton::BUTTON4,
+            KeyCode::2, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+        </autogen>
+    </item>
+    <item>
+        <name>Slide Up to Previous Space(Microsoft Sculpt Comfort Mouse)</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.slide_down</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __KeyToKey__
+            PointingButton::BUTTON5,
+            KeyCode::1, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L,
+        </autogen>
+    </item>
+    <item>
+        <name>Scroll Left</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.scroll_left_normal</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __ScrollWheelToScrollWheel__
+            ScrollWheel::LEFT, ModifierFlag::COMMAND_L,
+            ScrollWheel::LEFT,
+        </autogen>
+    </item>
+    <item>
+        <name>Scroll Right</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.scroll_right_normal</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __ScrollWheelToScrollWheel__
+            ScrollWheel::RIGHT, ModifierFlag::COMMAND_L,
+            ScrollWheel::RIGHT,
+        </autogen>
+    </item>
+    <item>
+        <name>Scroll Left to Backward(Microsoft Sculpt Comfort Mouse)</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.scroll_left</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __ScrollWheelToKey__
+            ScrollWheel::LEFT,
+            KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
+    <item>
+        <name>Scroll Right to Forward(Microsoft Sculpt Comfort Mouse)</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.scroll_right</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __ScrollWheelToKey__
+            ScrollWheel::RIGHT,
+            KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
+    <item>
+        <name>Mouse Middle Button to Mission Control(Microsoft Sculpt Comfort Mouse)</name>
+        <identifier>com.microsoft.mouse.sculpt_comfort.scroll_middle</identifier>
+        <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
+        <autogen>
+            __KeyToKey__
+            PointingButton::MIDDLE,
+            KeyCode::MISSION_CONTROL,
+        </autogen>
+    </item>
 </root>
