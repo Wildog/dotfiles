@@ -1,6 +1,38 @@
 <?xml version="1.0"?>
 <!-- Key Modification in System Preference: CapsLock=>Control for Internal Keyboard -->
 <root>
+    <appdef>
+        <appname>MACVIM</appname>
+        <equal>org.vim.MacVim</equal>
+    </appdef>
+    <appdef>
+        <appname>intellij</appname>
+        <equal>com.jetbrains.intellij</equal>
+    </appdef>
+    <appdef>
+        <appname>iTerm2</appname>
+        <equal>com.googlecode.iterm2</equal>
+    </appdef>
+    <appdef>
+        <appname>xcode</appname>
+        <equal>com.apple.dt.Xcode</equal>
+    </appdef>
+    <appdef>
+        <appname>quiver</appname>
+        <equal>com.happenapps.Quiver</equal>
+    </appdef>
+    <appdef>
+        <appname>Finder</appname>
+        <equal>com.apple.finder</equal>
+    </appdef>
+    <appdef>
+        <appname>sketch</appname>
+        <equal>com.bohemiancoding.sketch3</equal>
+    </appdef>
+    <appdef>
+        <appname>logic</appname>
+        <equal>com.apple.logic10</equal>
+    </appdef>
     <item>
         <name>Ctrl+H/J/K/L to move as in Vim</name>
         <identifier>private.move</identifier>
@@ -155,14 +187,6 @@
     <item>
         <name>Backquote to Esc in MacVim</name>
         <identifier>private.macvim</identifier>
-        <appdef>
-            <appname>MACVIM</appname>
-            <equal>org.vim.MacVim</equal>
-        </appdef>
-        <appdef>
-            <appname>iTerm2</appname>
-            <equal>com.googlecode.iterm2</equal>
-        </appdef>
         <only>MACVIM, iTerm2</only>
         <device_only>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_only>
         <autogen>
@@ -183,10 +207,6 @@
     <item>
         <name>Open with MacVim in Finder</name>
         <identifier>private.mviminfinder</identifier>
-        <appdef>
-            <appname>Finder</appname>
-            <equal>com.apple.finder</equal>
-        </appdef>
         <only>Finder</only>
         <autogen>
             --KeyToKey--
@@ -201,26 +221,6 @@
             <appendix>Ctrl-w delete preceding word (Shift+Option+Left, Delete)</appendix>
             <appendix>Ctrl-u delete preceding line (Shift+Command+Left, Delete)</appendix>
             <identifier>option.vim_insert_mode</identifier>
-            <appdef>
-                <appname>MACVIM</appname>
-                <equal>org.vim.MacVim</equal>
-            </appdef>
-            <appdef>
-                <appname>intellij</appname>
-                <equal>com.jetbrains.intellij</equal>
-            </appdef>
-            <appdef>
-                <appname>iTerm2</appname>
-                <equal>com.googlecode.iterm2</equal>
-            </appdef>
-            <appdef>
-                <appname>xcode</appname>
-                <equal>com.apple.dt.Xcode</equal>
-            </appdef>
-            <appdef>
-                <appname>quiver</appname>
-                <equal>com.happenapps.Quiver</equal>
-            </appdef>
             <not>MACVIM</not>
             <not>iTerm2</not>
             <not>intellij</not>
@@ -337,15 +337,12 @@
             ScrollWheel::RIGHT,
         </autogen>
     </item>
-    <appdef>
-        <appname>sketch</appname>
-        <equal>com.bohemiancoding.sketch3</equal>
-    </appdef>
     <item>
         <name>Scroll Left to Backward(Microsoft Sculpt Comfort Mouse)</name>
         <identifier>com.microsoft.mouse.sculpt_comfort.scroll_left</identifier>
         <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
         <not>sketch</not>
+        <not>logic</not>
         <autogen>
             __ScrollWheelToKey__
             ScrollWheel::LEFT,
@@ -357,6 +354,7 @@
         <identifier>com.microsoft.mouse.sculpt_comfort.scroll_right</identifier>
         <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_COMFORT</device_only>
         <not>sketch</not>
+        <not>logic</not>
         <autogen>
             __ScrollWheelToKey__
             ScrollWheel::RIGHT,
