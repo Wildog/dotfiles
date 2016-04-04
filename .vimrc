@@ -145,6 +145,7 @@ let g:weather#area = 'xuzhou,china'
 " Highlight YAML frontmatter of markdown
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_conceal = 0
 " YouCompleteMe related conf
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_error_symbol = '>>'
