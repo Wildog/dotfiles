@@ -1,0 +1,28 @@
+[user]
+    name = Wildog
+    email = i@wil.dog
+[filter "media"]
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+[filter "lfs"]
+    clean = git lfs clean %f
+    smudge = git lfs smudge %f
+    required = true
+[credential]
+    helper = osxkeychain
+[color "status"]
+  changed = yellow
+  added = green
+  untracked = red
+[core]
+    excludesfile = ~/.config/git/ignore
+[push]
+    default = simple
+[alias]
+    change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ $`echo $VAR` = \\\"$OLD\\\" ]]; then export $VAR=\\\"$NEW\\\"; fi\" $@; }; f "
+    untracked = ls-files --other --exclude-standard
+    staged = ls-files --staged
+    modified = ls-files --modified
+    deleted = ls-files --deleted
+    gitignored = ls-files -o -i --exclude-standard
+    sig = !git ls-files -v | grep "^[[:lower:]]"
