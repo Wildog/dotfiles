@@ -176,8 +176,8 @@ let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
 " JCommenter related conf
 autocmd FileType java source ~/.vim/macros/jcommenter.vim
 autocmd FileType java map <leader>cj :call JCommentWriter()<CR>
-autocmd FileType java let b:jcommenter_file_author='Wildog (in@limbo.space)'
-autocmd FileType java let b:jcommenter_class_author='Wildog (in@limbo.space)'
+autocmd FileType java let b:jcommenter_file_author='Wildog (i@wil.dog)'
+autocmd FileType java let b:jcommenter_class_author='Wildog (i@wil.dog)'
 let java_highlight_functions = 1
 " EasyTags related conf
 " let g:easytags_syntax_keyword = 'always'
