@@ -359,6 +359,7 @@ nmap <leader>ln :lne<CR>
 nmap <leader>lp :lp<CR>
 nmap <silent> <leader>ll :call Diags()<CR>
 nmap <silent> <leader>lo :call Diags()<CR>
+nmap <silent> <leader>lc :lclose<CR>
 nmap <silent> <leader>lr :SyntasticReset<CR>
 " Open new tab from current split window
 nnoremap <C-w><C-t> <C-w><S-t>
@@ -495,6 +496,7 @@ func! Diags()
         exec "YcmDiags"
     else
         exec "SyntasticCheck"
+        exec "lopen"
     endif
 endfunc
 
