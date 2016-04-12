@@ -36,6 +36,7 @@ set softtabstop=4
 set expandtab
 set cursorline
 set timeoutlen=3000 ttimeoutlen=0
+set foldlevel=99
 " set fdm=marker
 " set autosave=5
 " set cursorline
@@ -84,6 +85,9 @@ au TabEnter * if bufname("%") == "" | exec "cd ~/tmp" | endif
 au BufEnter * set noro
 " Custom vim-airline initialization
 autocmd User AirlineAfterInit call AirlineInit()
+" SimpylFold fix
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 " Auto mkview and loadview
 " autocmd BufWinLeave *.* mkview
 " autocmd BufWinEnter *.* silent loadview
@@ -118,6 +122,8 @@ Plugin 'fugitive.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ShowMarks'
 Plugin 'Emmet.vim'
+Plugin 'vim-scripts/indentpython'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'kannokanno/previm'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'SirVer/ultisnips'
@@ -198,6 +204,8 @@ let g:previm_open_cmd = 'open -g'
 map <silent> <leader>p :PrevimOpen<CR>
 " NERDCommenter related
 let g:NERDSpaceDelims = 1
+" Python related
+let python_highlight_all=1
 " Syntastic related conf
 let g:syntastic_python_checkers = ['python']
 let g:syntastic_java_checkers = ['javac']
@@ -350,6 +358,8 @@ nmap <silent> <leader><space> :set hls!<CR>
 " Fold {...} quickly
 nnoremap <silent> <leader>zf ?{<CR>:nohl<CR>zf%
 nnoremap <silent> <space> za
+nnoremap <silent> zr zR
+nnoremap <silent> zm zM
 " Change the behavior of <Enter> to IDE mode when completing
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Paste last yank(after deletion) or just last deleted
