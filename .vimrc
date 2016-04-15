@@ -101,14 +101,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
-Plugin 'exvim/ex-utility'
-Plugin 'exvim/ex-project'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'chrisbra/unicode.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'The-NERD-Commenter'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Tagbar'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
@@ -132,6 +132,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'antoyo/vim-licenses'
 Plugin 'mattn/webapi-vim'
 Plugin 'Wildog/airline-weather.vim'
+Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'rustushki/JavaImp.vim'
 Plugin 'rizzatti/dash.vim'
 call vundle#end()            " required
@@ -146,6 +147,7 @@ let g:airline#extensions#tabline#fnamemod = ':p:t'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 "tab number
+" let g:airline#extensions#ycm#enabled = 1
 " airline-weather related conf
 let g:weather#area = 'xuzhou,china'
 " Highlight YAML frontmatter of markdown
@@ -235,7 +237,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'OpenMulti()':          ['<c-t>'],
   \ }
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|boot|local|oh-my-zsh|ssh|dropbox|Trash|ShadowsocksX|bash_profile|bash_sessions|aria2|asciinema|pip|virtualenvs|cheat|gem|lldb|node-gyp|hg|svn|cache|npm|vimview|vim|javacomplete2)$)|(Library|Documents|Music|Photos).*',
+  \ 'dir':  '\v[\/](\.(android|gradle|qrsctl|qrsboxcli|tags|qrsync|sogouinput|subversion|Genymobile|pylint.d|oracle_jre_usage|cocoapods|gervill|git|boot|local|oh-my-zsh|ssh|dropbox|Trash|ShadowsocksX|bash_profile|bash_sessions|aria2|asciinema|pip|virtualenvs|cheat|gem|lldb|node-gyp|hg|svn|cache|npm|vimview|vim|javacomplete2)$)|(Library|Documents|Music|Photos).*',
   \ 'file': '\v\.(DS_Store|mp3|so|jpg|qvnote|qvnotebook|png|jpeg|swp|swo|swm|swn|swl|nmsv|session|history|historynew|pdf|tiff)$',
   \ }
 " NERDTree related conf
@@ -318,16 +320,19 @@ nmap <leader>js :JavaImpSort<CR>
 nmap <leader>jf :JavaImpFile<CR>
 " Dash.vim related
 nmap <silent> <D-C-/> <Plug>DashSearch
+" Unicode related
+nmap ga :UnicodeName<CR>
+imap <C-g>a <C-x><C-z>
 " Open Taglist
 nmap <leader>t :TagbarToggle<CR>
-nmap <leader>r :EXProjectToggle<CR>
 " Open NERDTree and CtrlP
-nmap <leader>f :NERDTree<CR>
+nmap <leader>f :NERDTreeFind<CR>
 let g:ctrlp_map = '<leader>wf'
 nmap <leader>wr :CtrlPMRU<CR>
 nmap <leader>wt :CtrlPBufTagAll<CR>
 nmap <leader>wd :CtrlPDir ~<CR>
 nmap <leader>wb :CtrlPBookmarkDir<CR>
+nmap <leader>wa :CtrlPBookmarkDirAdd!<CR>
 " Toggle IndentLines <Option-h>
 nmap <silent> ˙ :IndentLinesToggle<CR>
 imap <silent> ˙ <Esc>:IndentLinesToggle<CR>a

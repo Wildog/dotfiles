@@ -32,6 +32,7 @@
 *.swp
 *.bak
 
+*.exproject
 .DS_Store
 .DS_Store?
 .AppleDouble
