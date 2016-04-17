@@ -113,6 +113,7 @@ Plugin 'Tagbar'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'tabular'
+Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-smooth-scroll'
@@ -133,8 +134,9 @@ Plugin 'antoyo/vim-licenses'
 Plugin 'mattn/webapi-vim'
 Plugin 'Wildog/airline-weather.vim'
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'rustushki/JavaImp.vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 call vundle#end()            " required
 " Airline related conf
 let g:airline_powerline_fonts = 1
@@ -175,9 +177,6 @@ let g:ycm_semantic_triggers =  {
     \ 'ruby' : ['.', '::'],
     \ 'lua' : ['.', ':'],
     \ 'erlang' : [':'] }
-" JavaImp related conf
-let g:JavaImpPaths = $HOME."/algs4/src"
-let g:JavaImpDataDir = $HOME."/.cache/javaimp"
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
@@ -232,10 +231,6 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_max_depth = 10
 let g:ctrlp_extensions = ['bookmarkdir', 'dir']
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("t")': ['<c-o>'],
-  \ 'OpenMulti()':          ['<c-t>'],
-  \ }
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(android|gradle|qrsctl|qrsboxcli|tags|qrsync|sogouinput|subversion|Genymobile|pylint.d|oracle_jre_usage|cocoapods|gervill|git|boot|local|oh-my-zsh|ssh|dropbox|Trash|ShadowsocksX|bash_profile|bash_sessions|aria2|asciinema|pip|virtualenvs|cheat|gem|lldb|node-gyp|hg|svn|cache|npm|vimview|vim|javacomplete2)$)|(Library|Documents|Music|Photos).*',
   \ 'file': '\v\.(DS_Store|mp3|so|jpg|qvnote|qvnotebook|png|jpeg|swp|swo|swm|swn|swl|nmsv|session|history|historynew|pdf|tiff)$',
@@ -314,10 +309,13 @@ let g:ycm_key_invoke_completion = '<C-f>'
 nmap <silent> <leader>g :YcmCompleter GoTo<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
 nmap <silent> <leader>i :YcmCompleter FixIt<CR>
-" JavaImp related
-nmap <leader>ji :JavaImpSilent<CR>
-nmap <leader>js :JavaImpSort<CR>
-nmap <leader>jf :JavaImpFile<CR>
+" JavaComplete related
+nmap <leader>ji <Plug>(JavaComplete-Imports-Add)
+nmap <leader>ja <Plug>(JavaComplete-Imports-AddMissing)
+nmap <leader>jr <Plug>(JavaComplete-Imports-RemoveUnused)
+nmap <leader>jg :call javacomplete#generators#AbstractDeclaration()<CR>
+" VimShell related
+nmap <leader>sh :call RunVimShell()<CR>
 " Dash.vim related
 nmap <silent> <D-C-/> <Plug>DashSearch
 " Unicode related
@@ -370,12 +368,9 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Paste last yank(after deletion) or just last deleted
 nmap <C-p> "0p
 " Show location list (ycm diagnostic list)
-nmap <leader>ln :lne<CR>
-nmap <leader>lp :lp<CR>
-nmap <silent> <leader>ll :call Diags()<CR>
-nmap <silent> <leader>lo :call Diags()<CR>
-nmap <silent> <leader>lc :lclose<CR>
-nmap <silent> <leader>lr :SyntasticReset<CR>
+nmap [l :lne<CR>
+nmap ]l :lp<CR>
+nmap <silent> <leader>l :call Diags()<CR>
 " Open new tab from current split window
 nnoremap <C-w><C-t> <C-w><S-t>
 " mkview and loadview
@@ -513,6 +508,12 @@ func! Diags()
         exec "SyntasticCheck"
         exec "lopen"
     endif
+endfunc
+
+func! RunVimShell()
+    setlocal noautochdir
+    exec "VimShell"
+    setlocal autochdir
 endfunc
 
 " Check whether a tab is empty
