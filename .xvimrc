@@ -1,0 +1,12 @@
+set incsearch
+set vimregex
+set timeoutlen=2000
+
+nmap \bp :xccmd toggleBreakpointAtCurrentLine<CR>
+nmap \cm :xccmd commentAndUncommentCurrentLines<CR>
+
+nnoremap <C-o> <C-t>
+nnoremap \g <C-]>
+
+nmap ]l :nissue<cr>
+nmap [l :pissue<cr>
