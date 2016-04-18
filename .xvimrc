@@ -4,6 +4,7 @@ set timeoutlen=2000
 
 nmap \bp :xccmd toggleBreakpointAtCurrentLine<CR>
 nmap \cm :xccmd commentAndUncommentCurrentLines<CR>
+vmap \cm :xccmd commentAndUncommentCurrentLines<CR>
 
 nnoremap <C-o> <C-t>
 nnoremap \g <C-]>
