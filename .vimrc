@@ -167,16 +167,16 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_semantic_triggers =  {
-    \ 'c' : ['->', '.'],
-    \ 'objc' : ['->', '.'],
-    \ 'ocaml' : ['.', '#'],
-    \ 'cpp,objcpp' : ['->', '.', '::'],
-    \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-    \ 'perl' : ['->'],
-    \ 'php' : ['->', '::'],
-    \ 'ruby' : ['.', '::'],
-    \ 'lua' : ['.', ':'],
-    \ 'erlang' : [':'] }
+\ 'c' : ['->', '.'],
+\ 'objc' : ['->', '.'],
+\ 'ocaml' : ['.', '#'],
+\ 'cpp,objcpp' : ['->', '.', '::'],
+\ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+\ 'perl' : ['->'],
+\ 'php' : ['->', '::'],
+\ 'ruby' : ['.', '::'],
+\ 'lua' : ['.', ':'],
+\ 'erlang' : [':'] }
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
@@ -220,9 +220,9 @@ let g:syntastic_enable_balloons = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": ['java', 'python'],
-    \ "passive_filetypes": [] }
+\ "mode": "passive",
+\ "active_filetypes": ['java', 'python'],
+\ "passive_filetypes": [] }
 " let g:syntastic_auto_jump = 1
 " CtrlP related
 let g:ctrlp_use_caching = 1
@@ -232,9 +232,9 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_max_depth = 10
 let g:ctrlp_extensions = ['bookmarkdir', 'dir']
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(android|gradle|qrsctl|qrsboxcli|tags|qrsync|sogouinput|subversion|Genymobile|pylint.d|oracle_jre_usage|cocoapods|gervill|git|boot|local|oh-my-zsh|ssh|dropbox|Trash|ShadowsocksX|bash_profile|bash_sessions|aria2|asciinema|pip|virtualenvs|cheat|gem|lldb|node-gyp|hg|svn|cache|npm|vimview|vim|javacomplete2)$)|(Library|Documents|Music|Photos).*',
-  \ 'file': '\v\.(DS_Store|mp3|so|jpg|qvnote|qvnotebook|png|jpeg|swp|swo|swm|swn|swl|nmsv|session|history|historynew|pdf|tiff)$',
-  \ }
+\ 'dir':  '\v[\/](\.(android|gradle|qrsctl|qrsboxcli|tags|qrsync|sogouinput|subversion|Genymobile|pylint.d|oracle_jre_usage|cocoapods|gervill|git|boot|local|oh-my-zsh|ssh|dropbox|Trash|ShadowsocksX|bash_profile|bash_sessions|aria2|asciinema|pip|virtualenvs|cheat|gem|lldb|node-gyp|hg|svn|cache|npm|vimview|vim|javacomplete2)$)|(Library|Documents|Music|Photos).*',
+\ 'file': '\v\.(DS_Store|mp3|so|jpg|qvnote|qvnotebook|png|jpeg|swp|swo|swm|swn|swl|nmsv|session|history|historynew|pdf|tiff)$',
+\ }
 " NERDTree related conf
 let NERDTreeWinSize=30
 let NERDTreeQuitOnOpen=1
@@ -244,9 +244,9 @@ let g:EasyMotion_smartcase = 1
 " UltiSnips related conf
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
 let g:UltiSnipsExpandTrigger="<C-s>"
-let g:UltiSnipsListSnippets="<C-tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-f>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:UltiSnipsListSnippets=""
+let g:UltiSnipsJumpForwardTrigger="<C-D-.>"
+let g:UltiSnipsJumpBackwardTrigger="<C-D-,>"
 let g:UltiSnipsEditSplit="vertical"
 " Tagbar related conf
 let g:tagbar_left=1

@@ -6,6 +6,8 @@ nmap \bp :xccmd toggleBreakpointAtCurrentLine<CR>
 nmap \cm :xccmd commentAndUncommentCurrentLines<CR>
 vmap \cm :xccmd commentAndUncommentCurrentLines<CR>
 
+imap <C-e> <Esc>$a
+
 nnoremap <C-o> <C-t>
 nnoremap \g <C-]>
 
