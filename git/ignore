@@ -13,7 +13,6 @@
 *.so.*
 *.dylib
 *.out
-*.app
 *.so
 .dSYM/
 
