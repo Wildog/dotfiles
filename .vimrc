@@ -169,16 +169,18 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_semantic_triggers =  {
-\ 'c' : ['->', '.'],
-\ 'objc' : ['->', '.'],
-\ 'ocaml' : ['.', '#'],
-\ 'cpp,objcpp' : ['->', '.', '::'],
-\ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-\ 'perl' : ['->'],
-\ 'php' : ['->', '::'],
-\ 'ruby' : ['.', '::'],
-\ 'lua' : ['.', ':'],
-\ 'erlang' : [':'] }
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \             're!\[.*\]\s'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
@@ -245,7 +247,7 @@ let NERDTreeShowLineNumbers=0
 let g:EasyMotion_smartcase = 1
 " UltiSnips related conf
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
-let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsExpandTrigger="<C-f>"
 let g:UltiSnipsListSnippets=""
 let g:UltiSnipsJumpForwardTrigger="<C-D-.>"
 let g:UltiSnipsJumpBackwardTrigger="<C-D-,>"
@@ -307,8 +309,9 @@ nmap <leader>bd :bd<CR>"}}}
 " ---Plugin related---"{{{
 " YouCompleteMe related
 let g:ycm_key_detailed_diagnostics = '<leader>d'
-let g:ycm_key_invoke_completion = '<C-f>'
+let g:ycm_key_invoke_completion = '<C-s>'
 nmap <silent> <leader>g :YcmCompleter GoTo<CR>
+nmap <silent> <leader>r :YcmCompleter GoToReferences<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
 nmap <silent> <leader>i :YcmCompleter FixIt<CR>
 " JavaComplete related
