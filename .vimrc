@@ -183,7 +183,7 @@ let g:ycm_semantic_triggers =  {
   \ }
 " Javacomplete related conf
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar'
+let g:JavaComplete_LibsPath='/Users/pro/algs4/algs4.jar:/Users/pro/algs4/servlet-api.jar:/Users/pro/algs4/mysql.jar'
 " JCommenter related conf
 autocmd FileType java source ~/.vim/macros/jcommenter.vim
 autocmd FileType java map <leader>cj :call JCommentWriter()<CR>
@@ -201,6 +201,8 @@ let g:indentLine_enabled=1
 let g:indentLine_char='┆'
 let g:indentLine_color_gui='#5C8A41'
 let g:indentLine_color_term=28
+" closetag related conf
+let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.jsp"
 " Enable html/css only for emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
@@ -215,7 +217,7 @@ let python_highlight_all=1
 let g:syntastic_python_checkers = ['python']
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_checkstyle_classpath = "~/algs4/checkstyle-6.13-all.jar"
-let g:syntastic_java_javac_classpath = '.:~/algs4/algs4.jar:~/algs4/mysql.jar'
+let g:syntastic_java_javac_classpath = '.:~/algs4/algs4.jar:~/algs4/mysql.jar:~/algs4/servlet-api.jar'
 let g:syntastic_java_checkstyle_conf_file = "~/algs4/google_checks.xml"
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
