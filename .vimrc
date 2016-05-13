@@ -246,7 +246,7 @@ let NERDTreeWinSize=30
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=0
 " EasyMotion related conf
-let g:EasyMotion_smartcase = 1
+let g:EasyMotion_smartcase=1
 " UltiSnips related conf
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
 let g:UltiSnipsExpandTrigger="<C-f>"
@@ -258,7 +258,8 @@ let g:UltiSnipsEditSplit="vertical"
 let g:tagbar_left=1
 let g:tagbar_width=30
 let g:tagbar_autofocus=1
-let g:tagbar_singleclick = 1
+let g:tagbar_singleclick=1
+let g:tagbar_autoclose=1
 " License related conf
 let g:licenses_copyright_holders_name = 'Wildog <in@limbo.space>'
 let g:licenses_authors_name = 'Wildog <in@limbo.space>'
@@ -375,8 +376,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Paste last yank(after deletion) or just last deleted
 nmap <C-p> "0p
 " Show location list (ycm diagnostic list)
-nmap [l :lne<CR>
-nmap ]l :lp<CR>
+nmap ]l :lne<CR>
+nmap [l :lp<CR>
 nmap <silent> <leader>l :call Diags()<CR>
 " Open new tab from current split window
 nnoremap <C-w><C-t> <C-w><S-t>
@@ -493,7 +494,7 @@ func! RunResult()
         elseif &filetype == "c"
             exec "! %<"
         elseif &filetype == "python"
-            exec "call RunPython"
+            exec "call RunPython()"
         elseif &filetype == "java"
             exec "!java %<"
         endif
