@@ -320,9 +320,9 @@ nmap <silent> <leader>e :YcmCompleter GetType<CR>
 nmap <silent> <leader>i :YcmCompleter FixIt<CR>
 " JavaComplete related
 nmap <leader>ji <Plug>(JavaComplete-Imports-Add)
-nmap <leader>ja <Plug>(JavaComplete-Imports-AddMissing)
+nmap <leader>jm <Plug>(JavaComplete-Imports-AddMissing)
 nmap <leader>jr <Plug>(JavaComplete-Imports-RemoveUnused)
-nmap <leader>jg :call javacomplete#generators#AbstractDeclaration()<CR>
+nmap <leader>jd :call javacomplete#generators#AbstractDeclaration()<CR>
 " VimShell related
 nmap <leader>sh :call RunVimShell()<CR>
 " Dash.vim related
