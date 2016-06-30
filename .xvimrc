@@ -10,6 +10,12 @@ imap <C-e> <Esc>$a
 
 nnoremap <C-o> <C-t>
 nnoremap \g <C-]>
+nnoremap \d :xccmd jumpToDefinition<CR>
+nnoremap \p :xccmd jumpToInstructionPointer<CR>
 
 nmap ]l :nissue<cr>
 nmap [l :pissue<cr>
+nmap [h :xccmd jumpToPreviousCounterpart<CR>
+nmap ]h :xccmd jumpToNextCounterpart<CR>
+nnoremap [[ :xccmd goBack<CR>
+nnoremap ]] :xccmd goNext<CR>

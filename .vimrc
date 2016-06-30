@@ -155,6 +155,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1 "tab number
 " let g:airline#extensions#ycm#enabled = 1
 " airline-weather related conf
 let g:weather#area = 'xuzhou,china'
+let g:weather#cache_ttl = '14400'
 " Highlight YAML frontmatter of markdown
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1

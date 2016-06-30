@@ -30,7 +30,7 @@ stty stop undef
 # Environment Settings
 JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
 CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:~/.vim/autoload:~/algs4/algs4.jar:~/algs4/mysql.jar:~/algs4/servlet-api.jar
-export CATALINA_HOME=/usr/local/Cellar/tomcat/8.0.33/libexec
+export CATALINA_HOME=/usr/local/Cellar/tomcat/8.5.3/libexec
 PATH=$PATH:$JAVA_HOME/bin
 
 PATH=.:/usr/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:/opt/X11/bin

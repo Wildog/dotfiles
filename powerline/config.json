@@ -27,7 +27,7 @@
         },
         "tmux": {
             "colorscheme": "default",
-            "theme": "with_weather"
+            "theme": "weather"
         },
         "vim": {
             "colorscheme": "default",
