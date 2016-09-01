@@ -144,6 +144,7 @@ call vundle#end()            " required
 " Airline related conf
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerline'
+" let g:airline_skip_empty_sections = 1
 let g:airline#extensions#whitespace#checks = [ 'indent', 'long' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#tabline#enabled = 1
