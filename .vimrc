@@ -88,6 +88,7 @@ autocmd User AirlineAfterInit call AirlineInit()
 " SimpylFold fix
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+autocmd BufWinEnter *.py exec "VirtualEnvActivate default"
 " Auto mkview and loadview
 " autocmd BufWinLeave *.* mkview
 " autocmd BufWinEnter *.* silent loadview
@@ -113,6 +114,7 @@ Plugin 'Tagbar'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'tabular'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
@@ -144,7 +146,7 @@ call vundle#end()            " required
 " Airline related conf
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerline'
-" let g:airline_skip_empty_sections = 1
+let g:airline_skip_empty_sections = 1
 let g:airline#extensions#whitespace#checks = [ 'indent', 'long' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -161,6 +163,9 @@ let g:weather#cache_ttl = '14400'
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_conceal = 0
+" Jedi-vim related conf
+let g:jedi#show_call_signatures = '1'
+let g:jedi#show_call_signatures_delay = 0
 " YouCompleteMe related conf
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_error_symbol = '>>'
@@ -171,6 +176,9 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'python': 1
+      \}
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
   \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
@@ -320,6 +328,15 @@ nmap <silent> <leader>g :YcmCompleter GoTo<CR>
 nmap <silent> <leader>r :YcmCompleter GoToReferences<CR>
 nmap <silent> <leader>e :YcmCompleter GetType<CR>
 nmap <silent> <leader>i :YcmCompleter FixIt<CR>
+nmap <silent> <leader>a :YcmCompleter GetDoc<CR>
+" Jedi-vim related
+let g:jedi#goto_command = ''
+let g:jedi#goto_assignments_command = ''
+let g:jedi#goto_definitions_command = ''
+let g:jedi#documentation_command = '<leader>a'
+let g:jedi#usages_command = ''
+let g:jedi#completions_command = '<C-s>'
+let g:jedi#rename_command = '<leader>cn'
 " JavaComplete related
 nmap <leader>ji <Plug>(JavaComplete-Imports-Add)
 nmap <leader>jm <Plug>(JavaComplete-Imports-AddMissing)
@@ -410,14 +427,19 @@ function! AirlineInit()
     call airline#parts#define_accent('readonly', 'truered')
     call airline#parts#define_raw('modified', '%m')
     call airline#parts#define_accent('modified', 'bright')
+    call airline#parts#define_function('fillup', 'AirlineFillup')
     let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
     let g:airline_section_b = airline#section#create(['hunks', 'branch', '%<', 'readonly', spc, 'filename', 'modified'])
-    let g:airline_section_c = airline#section#create(['tagbar'])
+    let g:airline_section_c = airline#section#create(['tagbar', 'fillup'])
     let g:airline_section_gutter = airline#section#create(['%='])
     let g:airline_section_x = airline#section#create_right(['filetype', 'ffenc'])
     let g:airline_section_y = airline#section#create(['%1p%%'])
     let g:airline_section_z = airline#section#create(['linenr', ':%v '])
     let g:airline_section_warning = airline#section#create(['syntastic', 'whitespace'])
+endfunction
+
+function! AirlineFillup()
+    return ' '
 endfunction
 
 " Option+c to enter multi-match-copy search mode, paste by "+p
