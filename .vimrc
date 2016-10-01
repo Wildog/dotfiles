@@ -74,6 +74,7 @@ autocmd BufNewFile *.java
 " stop indentLine from messing with json
 autocmd InsertEnter *.json setlocal concealcursor=
 autocmd InsertLeave *.json setlocal concealcursor=inc
+autocmd BufNewFile,BufRead *.json let g:indentLine_conceallevel=0
 " Automatically retab after opening a fila
 au BufReadPost * if &modifiable | retab
 " Automatically located to last position
