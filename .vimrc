@@ -209,6 +209,7 @@ let g:easytags_include_members = 1
 let g:easytags_async = 1
 let g:easytags_by_filetype = '~/.tags'
 " IndentLine related conf
+let g:indentLine_faster = 1
 let g:indentLine_enabled=1
 let g:indentLine_char='┆'
 let g:indentLine_color_gui='#5C8A41'
@@ -505,8 +506,6 @@ func! CompileCode()
                 exec "call CompileGpp()"
         elseif &filetype == "c"
                 exec "call CompileGcc()"
-        elseif &filetype == "python"
-                exec "call RunPython()"
         elseif &filetype == "java"
                 exec "call CompileJava()"
         endif
