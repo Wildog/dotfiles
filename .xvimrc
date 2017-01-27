@@ -3,8 +3,16 @@ set vimregex
 set timeoutlen=2000
 
 nmap \bp :xccmd toggleBreakpointAtCurrentLine<CR>
-nmap \cm :xccmd commentAndUncommentCurrentLines<CR>
-vmap \cm :xccmd commentAndUncommentCurrentLines<CR>
+nmap \cm :xcmenucmd Comment Selection<CR>
+vmap \cm :xcmenucmd Comment Selection<CR>
+nmap \cp :xcmenucmd Copy Method and Function Declarations<CR>
+vmap \cp :xcmenucmd Copy Method and Function Declarations<CR>
+nmap \<space> :xcmenucmd Remove All Highlighting<CR>
+vmap \<space> :xcmenucmd Remove All Highlighting<CR>
+nmap \h :xcmenucmd Highlight Occurences of Symbol<CR>
+vmap \h :xcmenucmd Highlight Occurences of Symbol<CR>
+nmap \cm :xcmenucmd Comment Selection<CR>
+vmap \cm :xcmenucmd Comment Selection<CR>
 
 imap <C-e> <Esc>$a
 
