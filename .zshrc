@@ -18,7 +18,7 @@ alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false'
 alias backupon='defaults delete com.apple.iTunes DeviceBackupsDisabled'
 alias backupoff='defaults write com.apple.iTunes DeviceBackupsDisabled -bool YES'
 alias aliyun='ssh -p 5537 -i ~/.ssh/aliyun root@121.42.176.74'
-alias wildog='cd ~/Projects/Repo/wildog.github.com && bundle exec jekyll serve -H 192.168.1.88'
+alias wildog='cd ~/Projects/Repo/wildog.github.com && bundle exec jekyll serve -H 192.168.2.106'
 alias checkstyle='checkstyle -c ~/algs4/google_checks.xml'
 
 # Disable Ctrl-s to map it in Vim

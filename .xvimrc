@@ -25,5 +25,5 @@ nmap ]l :nissue<cr>
 nmap [l :pissue<cr>
 nmap [h :xccmd jumpToPreviousCounterpart<CR>
 nmap ]h :xccmd jumpToNextCounterpart<CR>
-nnoremap [[ :xccmd goBack<CR>
-nnoremap ]] :xccmd goNext<CR>
+nnoremap [[ :xcmenucmd Go Back<CR>
+nnoremap ]] :xcmenucmd Go Next<CR>
